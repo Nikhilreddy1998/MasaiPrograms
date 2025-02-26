@@ -14,5 +14,3 @@ async function fetchDataHandler() {
         console.log("Error fetching data:", error);
     }
 }
-
-fetchDataHandler();
