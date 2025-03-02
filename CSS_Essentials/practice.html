@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complex Navigation</title>
+  <style>
+    nav {
+      background-color: #f0f0f0;
+      padding: 10px;
+    }
+
+    nav section {
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    nav section a {
+      color: #333;
+      text-decoration: none;
+      padding: 5px 10px;
+      display: block;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    nav section:nth-child(1) a {
+      color: #007bff; /* Blue for section 1 */
+    }
+
+    nav section:nth-child(2) a {
+      color: #28a745; /* Green for section 2 */
+    }
+
+    nav section:nth-child(3) a {
+      color: #dc3545; /* Red for section 3 */
+    }
+
+    nav section > a { /* Child combinator */
+      font-weight: bold;
+    }
+
+    nav section a:hover {
+      background-color: #e0e0e0;
+      color: #111;
+    }
+
+    nav section a:active {
+      background-color: #d0d0d0;
+      color: #000;
+    }
+
+    nav a[href^="https"] { /* Attribute selector and specificity */
+      color: #ffc107 !important; /* Yellow for https links */
+    }
+
+    nav section section a { /*nested links*/
+        font-size: 14px;
+        font-style: italic;
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <section>
+      <a href="#">Home</a>
+      <a href="https://example.com">External Link</a>
+      <a href="#">About</a>
+      <section>
+        <a href="#">Nested link</a>
+      </section>
+    </section>
+
+    <section>
+      <a href="#">Products</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </section>
+
+    <section>
+      <a href="#">Profile</a>
+      <a href="#">Settings</a>
+      <a href="#">Logout</a>
+    </section>
+  </nav>
+
+</body>
+</html>
