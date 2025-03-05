@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Box </title>
+  <style>
+
+    div>#i1{
+      background-color: blue;
+      width: 200px;
+      padding: 10px;
+      margin:10px;
+      border: 1px solid black;
+      box-sizing: content-box;
+    }
+
+    div>#i2{
+      background-color: green;
+      width: 200px;
+      padding: 10px;
+      border:1px solid red;
+      margin: 10px;
+      box-sizing: border-box;
+    }
+
+    div>#i3{
+      background-color: brown;
+      width: 200px;
+      padding: 15px;
+      border:1px solid blue;
+      margin: 30px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+    <div>
+
+  <div id="i1">
+    This is first box
+  </div>
+
+  <div id="i2">
+    This is second box
+  </div>
+
+  <div id="i3">
+    This is third box
+  </div>
+  </div>
+
+</body>
+</html>

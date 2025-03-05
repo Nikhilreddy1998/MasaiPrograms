@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bar Chart using Flexbox</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: sans-serif;
+  }
+
+  .chart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
+
+  .chart {
+    display: flex;
+    align-items: flex-end; /* Align bars to the bottom */
+    width: 800px; /* Adjust as needed */
+    height: 400px; /* Adjust as needed */
+    border-bottom: 2px solid black;
+    position: relative;
+  }
+
+  .bar {
+    flex: 1;
+    margin: 0 10px; /* Space between bars */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end; /* Align content to the bottom */
+  }
+
+  .bar-fill {
+    width: 100%;
+    background-color: lightblue; /* Default color */
+  }
+
+  .bar-label {
+    margin-top: 5px;
+  }
+
+  .y-axis {
+    position: absolute;
+    left: -40px;
+    top: 0;
+    display: flex;
+    flex-direction: column-reverse; /* Reverse the order for y-axis */
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .y-axis-label {
+    font-size: 12px;
+  }
+
+  .scale {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 14px;
+  }
+
+  .x-axis-label {
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="chart-container">
+  <div class="chart">
+    <div class="y-axis">
+      <div class="y-axis-label">120</div>
+      <div class="y-axis-label">110</div>
+      <div class="y-axis-label">100</div>
+      <div class="y-axis-label">90</div>
+      <div class="y-axis-label">80</div>
+      <div class="y-axis-label">70</div>
+      <div class="y-axis-label">60</div>
+      <div class="y-axis-label">50</div>
+      <div class="y-axis-label">40</div>
+      <div class="y-axis-label">30</div>
+      <div class="y-axis-label">20</div>
+      <div class="y-axis-label">10</div>
+      <div class="y-axis-label">0</div>
+    </div>
+    <div class="bar">
+      <div class="bar-fill" style="height: 120px; background-color: lightblue;"></div>
+      <div class="bar-label">Batch 1</div>
+    </div>
+    <div class="bar">
+      <div class="bar-fill" style="height: 80px; background-color: lightgreen;"></div>
+      <div class="bar-label">Batch 2</div>
+    </div>
+    <div class="bar">
+      <div class="bar-fill" style="height: 95px; background-color: gold;"></div>
+      <div class="bar-label">Batch 3</div>
+    </div>
+    <div class="bar">
+      <div class="bar-fill" style="height: 100px; background-color: mediumpurple;"></div>
+      <div class="bar-label">Batch 4</div>
+    </div>
+    <div class="bar">
+      <div class="bar-fill" style="height: 60px; background-color: palevioletred;"></div>
+      <div class="bar-label">Batch 5</div>
+    </div>
+  </div>
+  <div class="x-axis-label">Batches</div>
+  <div class="scale">Scale: 1 unit length = 10 children</div>
+</div>
+
+</body>
+</html>
