@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Responsive</title>
+<style>
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.left-column {
+  flex: 2;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.right-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.image-container {
+  margin: 5px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.left-column .image-container {
+  width: calc(25% - 10px);
+}
+
+.right-column .image-container {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    flex-direction: column;
+  }
+  .left-column, .right-column {
+    flex: 1;
+  }
+  .left-column .image-container {
+    width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 480px) {
+  .left-column .image-container {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+<div class="gallery">
+  <div class="left-column">
+    <div class="image-container"><img src="https://picsum.photos/id/8/367/267" alt="Image 1"></div>
+    <div class="image-container"><img src="https://picsum.photos/id/16/367/267" alt="Image 2"></div>
+    <div class="image-container"><img src="https://picsum.photos/id/26/367/267" alt="Image 3"></div>
+    <div class="image-container"><img src="https://picsum.photos/id/25/367/267" alt="Image 4"></div>
+    <div class="image-container"><img src="https://picsum.photos/id/43/367/267" alt="Image 5"></div>
+    <div class="image-container"><img src="https://picsum.photos/id/54/367/267" alt="Image 6"></div>
+    <div class="image-container"><img src="https://picsum.photos/id/56/367/267" alt="Image 7"></div>
+    <div class="image-container"><img src="https://picsum.photos/id/59/367/267" alt="Image 8"></div>
+    <div class="image-container"><img src="https://picsum.photos/id/58/367/267" alt="Image 9"></div>
+    <div class="image-container"><img src="https://picsum.photos/id/88/367/267" alt="Image 10"></div>
+    <div class="image-container"><img src="https://picsum.photos/id/44/367/267" alt="Image 11"></div>
+    <div class="image-container"><img src="https://picsum.photos/id/45/367/267" alt="Image 12"></div>
+  </div>
+  <div class="right-column">
+    <div class="image-container"><img src="https://picsum.photos/id/46/367/267" alt="Image 13"></div>
+    <div class="image-container"><img src="https://picsum.photos/id/47/367/267" alt="Image 14"></div>
+    <div class="image-container"><img src="https://picsum.photos/id/48/367/267" alt="Image 15"></div>
+    <div class="image-container"><img src="https://picsum.photos/id/49/367/267" alt="Image 16"></div>
+  </div>
+</div>
+</body>
+</html>
