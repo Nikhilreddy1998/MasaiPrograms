@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>basic_flex_box</title>
+    <style>
+        #box{
+            display:flex;
+            /*Initially default direction of flex is row if i give
+            flex direction column then items will arrange vertically*/
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height:100vh;
+        }
+        .c2{
+            border:2px solid black;
+            height: 200px;
+            width:200px;
+            background-color: chocolate;
+            margin:10px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box">
+    <div class="c2">container1</div>
+    <div class="c2">container2</div>
+    <div class="c2">container3</div>
+    <div class="c2">container4</div>
+    </div>
+</body>
+</html>
