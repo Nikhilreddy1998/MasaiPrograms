@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cool Cards</title>
+    <style>
+        .all-cards {
+            display: grid;
+            gap: 15px;
+            padding: 10px;
+        }
+
+        .one-card {
+            background-color: lightyellow;
+            border: 2px solid gray;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .one-card img {
+            width: 100%;
+            max-width: 120px;
+            height: auto;
+            margin-bottom: 8px;
+        }
+
+        @media (min-width: 800px) {
+            .all-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .all-cards {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 799px) {
+            .all-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="all-cards">
+        <div class="one-card">
+            <img src="https://images.pexels.com/photos/1490908/pexels-photo-1490908.jpeg?cs=srgb&dl=pexels-svetozar-milashevich-99573-1490908.jpg&fm=jpg" alt="dog">
+            <h3>Dog</h3>
+            <p>Dog is a pet animal.</p>
+        </div>
+        <div class="one-card">
+            <img src="https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?cs=srgb&dl=pexels-pixabay-104827.jpg&fm=jpg" alt="cat">
+            <h3>Cat</h3>
+            <p>Cat eat mouse</p>
+        </div>
+        <div class="one-card">
+            <img src="https://images.pexels.com/photos/3828097/pexels-photo-3828097.jpeg?cs=srgb&dl=pexels-smoothclick0z1-3828097.jpg&fm=jpg" alt="rabbit">
+            <h3>Rabbit</h3>
+            <p>Rabbit lives underground</p>
+        </div>
+        <div class="one-card">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/024/189/546/small/photorealistic-image-of-a-majestic-eagle-soaring-in-the-sky-ai-generative-photo.jpg" alt="eagle">
+            <h3>Eagle</h3>
+            <p>Eagle fly above the sky.</p>
+        </div>
+         <div class="one-card">
+            <img src="https://t4.ftcdn.net/jpg/01/79/69/37/360_F_179693709_ObozAm8nXPQJ5bPvgC529qdu8uBChJAv.jpg" alt="lion">
+            <h3>Lion</h3>
+            <p>Lion is King of jungle</p>
+        </div>
+        <div class="one-card">
+            <img src="https://plus.unsplash.com/premium_photo-1661847643150-4e06569d2ec1?fm" alt="tiger">
+            <h3>Tiger</h3>
+            <p>Tiger is national animal of India</p>
+        </div>
+        <div class="one-card">
+            <img src="https://images.unsplash.com/photo-1607350999170-b893fef057ea?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8d2lsZCUyMHdvbGZ8ZW58MHx8MHx8fDA%3D" alt="wolf">
+            <h3>Wolf</h3>
+            <p>Wolf is the most credible animal.</p>
+        </div>
+        <div class="one-card">
+            <img src="https://media.istockphoto.com/id/1758173843/photo/a-fast-running-cheetah-taking-a-turn-to-the-left-from-the-front.jpg?s=612x612&w=0&k=20&c=KZbaAy1djko95TsGqjY2RXf_IbdGSE3Tuv1_NYcM7ws=" alt="Cheetah">
+            <h3>Cheetah</h3>
+            <p>Cheetah is the fastest animal.</p>
+        </div>
+    </div>
+</body>
+</html>
