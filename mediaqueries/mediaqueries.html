@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div#box{
+            width:80%;
+            height:50vh;
+            margin:auto;
+            background-color: yellow;
+            display: grid;
+            grid-template-areas: repeat(2,1fr);
+            gap:20px;
+        }
+        div#box>div{
+            border:2px solid black;
+        }
+        div#box>div:nth-of-type(1){
+            background-color: aqua;
+            grid-area: 3/2/4/3;
+
+        }
+        div#box>div:nth-of-type(2){
+            background-color: rgb(21, 255, 0);
+
+
+        }
+        div#box>div:nth-of-type(3){
+            background-color: rgb(255, 238, 0);
+
+        }
+        div#box>div:nth-of-type(4){
+            background-color: rgb(103, 108, 108);
+
+        }
+        div#box>div:nth-of-type(5){
+            background-color: rgb(2, 16, 16);
+
+        }
+        div#box>div:nth-of-type(6){
+            background-color: rgb(76, 0, 255);
+            grid-area: 
+
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="box">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    </div>
+    
+</body>
+</html>
