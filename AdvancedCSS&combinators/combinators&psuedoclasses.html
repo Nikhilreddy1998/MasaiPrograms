@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+li:first-child {
+  font-weight: bold;
+}
+
+li:first-child + li {
+  background-color: lightblue;
+}
+
+li:nth-child(3) ~ li {
+  font-style: italic;
+}
+</style>
+</head>
+<body>
+
+<ol>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+  <li>Item 4</li>
+  <li>Item 5</li>
+</ol>
+
+</body>
+</html>
