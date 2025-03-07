@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Portfolio</title>
+<style>
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+header {
+    background-color: #e95420;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+nav {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 0.5em 0;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0 1em;
+}
+.container {
+    width: 80%;
+    margin: 20px auto;
+    overflow: hidden;
+}
+.about, .projects, .contact {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.about img {
+    max-width: 150px;
+    float: left;
+    margin-right: 20px;
+}
+.project {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+.project img {
+    max-width: 300px;
+    display: block;
+    margin-bottom: 10px;
+}
+footer {
+    background-color: #e95420;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to My Portfolio</h1>
+</header>
+
+<nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<div class="container">
+    <div class="about" id="about">
+        <h2>About Me</h2>
+        <img src="placeholder-image.jpg" alt="My Photo">
+        <p>Hello! I'm a web developer with a passion for creating functional and beautiful web applications.</p>
+        <p>A picture of me.</p>
+    </div>
+
+    <div class="projects" id="projects">
+        <h2>Projects</h2>
+
+        <div class="project">
+            <h3>Project One: Personal Blog</h3>
+            <img src="placeholder-blog.jpg" alt="Blog Screenshot">
+            <p>Screenshot of my personal blog project.</p>
+            <p>A personal blog where I write about web development, programming, and technology.</p>
+            <a href="#">View Project</a>
+            <p>Technologies Used:</p>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+        </div>
+
+        <div class="project">
+            <h3>Project Two: E-commerce Site</h3>
+            <img src="placeholder-ecommerce.jpg" alt="Ecommerce Screenshot">
+            <p>Screenshot of my e-commerce project.</p>
+            <p>An e-commerce website built to simulate a real-world online shopping experience.</p>
+            <a href="#">View Project</a>
+            <p>Technologies Used:</p>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="contact" id="contact">
+        <h2>Contact Me</h2>
+        <form>
+            <label for="name">Full Name:</label><br>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email"><br><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 My Portfolio</p>
+    <p>Follow me on: <a href="#">LinkedIn</a> | <a href="#">GitHub</a></p>
+</footer>
+
+</body>
+</html>
