@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div {
+  color: blue;
+}
+
+.highlight {
+  color: green; 
+}
+
+#special {
+  color: red; /*This property gets applied because specificity of id is 100,class is 10,element is 1*/
+}
+</style>
+</head>
+<body>
+
+<div class="highlight" id="special">This will get property of highest specifity.</div>
+
+</body>
+</html>
