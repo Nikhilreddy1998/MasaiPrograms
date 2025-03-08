@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div#box img:nth-of-type(1){
+            width:100%
+        }
+        div#box img:nth-of-type(2){
+            width:50%
+        }
+        div#box{
+            width:100%;
+            background-color: yellow;
+            display:grid;
+            
+        }
+        div#box>div{
+            width:50%;
+            border:2px solid red;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap:10px;
+            
+        }
+        @media(min-width:1024px){
+            div#box{
+                grid-template-columns: repeat(4,1fr);
+            }
+        }
+        @media(width>768px)and(width<1024px){
+            div#box{
+                grid-template-columns: repeat(2,1fr);
+            }
+        }
+        @media(max-width:768px){
+            div#box{
+                grid-template-columns: repeat(1,1fr);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div>
+            <img src="https://masai-website-images.s3.ap-south-1.amazonaws.com/Vijay_Shekhar_Sharma_Paytm_96f52579b8.jpg" alt="">
+            <h3>Vijay Shekhar Sharma</h3>
+            <p>Founder & CEO</p>
+            <img src="https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg" alt="">
+        </div>
+        <div>
+            <img src="https://masai-website-images.s3.ap-south-1.amazonaws.com/Vijay_Shekhar_Sharma_Paytm_96f52579b8.jpg" alt="">
+            <h3>Vijay Shekhar Sharma</h3>
+            <p>Founder & CEO</p>
+            <img src="https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg" alt="">
+        </div>
+        <div>
+            <img src="https://masai-website-images.s3.ap-south-1.amazonaws.com/Vijay_Shekhar_Sharma_Paytm_96f52579b8.jpg" alt="">
+            <h3>Vijay Shekhar Sharma</h3>
+            <p>Founder & CEO</p>
+            <img src="https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg" alt="">
+        </div>
+        <div>
+            <img src="https://masai-website-images.s3.ap-south-1.amazonaws.com/Vijay_Shekhar_Sharma_Paytm_96f52579b8.jpg" alt="">
+            <h3>Vijay Shekhar Sharma</h3>
+            <p>Founder & CEO</p>
+            <img src="https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg" alt="">
+        </div>
+    </div>
+</body>
+</html>
