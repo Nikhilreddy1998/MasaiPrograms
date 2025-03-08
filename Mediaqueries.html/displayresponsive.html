@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Responsive Card Layout</title>
+<style>
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+button:hover{
+    color: blue;
+}
+
+@media (min-width: 600px) {
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .card {
+    width: auto;
+    max-width: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="card-container">
+  <div class="card">
+    <img src="https://cdn.pixabay.com/photo/2018/07/31/22/08/lion-3576045_1280.jpg" alt="Lion">
+    <h3>I am Lion</h3>
+    <p>I am the king of jungle</p>
+    <button>Read More</button>
+  </div>
+  <div class="card">
+    <img src="https://media.istockphoto.com/id/1420676204/photo/portrait-of-a-royal-bengal-tiger-alert-and-staring-at-the-camera-national-animal-of-bangladesh.jpg?s=612x612&w=0&k=20&c=0OCYv99Ktv3fJ-YYlg7SetHBJj3pIk58WY7GDy5VCtI=" alt="Tiger">
+    <h3>I am Tiger</h3>
+    <p>National animal of India</p>
+    <button>Read More</button>
+  </div>
+  <div class="card">
+    <img src="https://media.istockphoto.com/id/1758173843/photo/a-fast-running-cheetah-taking-a-turn-to-the-left-from-the-front.jpg?s=612x612&w=0&k=20&c=KZbaAy1djko95TsGqjY2RXf_IbdGSE3Tuv1_NYcM7ws=" alt="Cheetah">
+    <h3>I am Cheetah</h3>
+    <p>I am Fastest animal</p>
+    <button>Read More</button>
+  </div>
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Red_fox_detailed_photo.jpg" alt="Fox">
+    <h3>I am fox</h3>
+    <p>I am the most cunning</p>
+    <button>Read More</button>
+  </div>
+  <div class="card">
+    <img src="https://images.pexels.com/photos/3250638/pexels-photo-3250638.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Eagle">
+    <h3>I am Eagle</h3>
+    <p>I am always on top.</p>
+    <button>Read More</button>
+  </div>
+  <div class="card">
+    <img src="https://images.pexels.com/photos/69421/biscayne-national-park-florida-american-crocodile-wildlife-69421.jpeg?cs=srgb&dl=pexels-pixabay-69421.jpg&fm=jpg" alt="Crocodile">
+    <h3>I am crocodile</h3>
+    <p>My tears are famous</p>
+    <button>Read More</button>
+  </div>
+</div>
+
+</body>
+</html>
