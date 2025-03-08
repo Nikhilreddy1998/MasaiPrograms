@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculator Grid</title>
+<style>
+  .calculator {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    width: 300px;
+    margin: 50px auto;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .display {
+    background-color: white;
+    padding: 10px;
+    text-align: right;
+    font-size: 1.5em;
+    border-radius: 3px;
+    grid-column:auto/span 4;
+  }
+
+  .button {
+    background-color: white;
+    border: none;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+
+  .button:hover {
+    background-color: #e0e0e0;
+  }
+
+  .operator {
+    background-color: #f8f8f8;
+  }
+
+  .operator:hover {
+    background-color: #e0e0e0;
+  }
+
+  .clear {
+    background-color: #ffcccc;
+  }
+
+  .clear:hover {
+    background-color: #ffb3b3;
+  }
+</style>
+</head>
+<body>
+
+<div class="calculator">
+  <div class="display"></div>
+  <button class="button">1</button>
+  <button class="button">2</button>
+  <button class="button">3</button>
+  <button class="button operator">+</button>
+  <button class="button">4</button>
+  <button class="button">5</button>
+  <button class="button">6</button>
+  <button class="button operator">-</button>
+  <button class="button">7</button>
+  <button class="button">8</button>
+  <button class="button">9</button>
+  <button class="button operator">x</button>
+  <button class="button clear">C</button>
+  <button class="button">0</button>
+  <button class="button">=</button>
+  <button class="button operator">/</button>
+</div>
+
+</body>
+</html>
