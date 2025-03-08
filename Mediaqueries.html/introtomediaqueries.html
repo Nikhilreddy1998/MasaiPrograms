@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mediaqueriebasic</title>
+    <style>
+        div#c1{
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+            height: 100vh;
+            width: 100%;
+            border: 2px solid black;
+        }
+        div.c2{
+            width: 40%;
+            border: 2px solid black;
+
+        }
+
+        @media(width>768px){
+            div#c1{
+            grid-template-columns: repeat(2,1fr);
+        }
+
+        }
+        @media(width>1024px){
+            div#c1{
+            grid-template-columns: repeat(3,1fr);
+        }
+
+        }
+    </style>
+</head>
+<body>
+    <div id="c1">
+    <div class="c2"><h1>class</h1></div>
+    <div class="c2"><h1>class</h1></div>
+    <div class="c2"><h1>class</h1></div>
+    <div class="c2"><h1>class</h1></div>
+    <div class="c2"><h1>class</h1></div>    
+    <div class="c2"><h1>class</h1></div>
+    <div class="c2"><h1>class</h1></div>
+    </div>
+
+    
+</body>
+</html>
