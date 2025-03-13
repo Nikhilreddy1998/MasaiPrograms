@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Dashboard</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons" />
+    <style>
+
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height:100vh;
+            background-color: lightgoldenrodyellow;
+        }
+
+        .finance{
+            width: 200px;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            height: 170vh;
+        }
+        .finance h2{
+            display: flex;
+            justify-content: start;
+        }
+
+        .finance ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .finance li {
+            padding: 10px 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: start;
+        }
+
+         #c1:hover {
+            color: black;
+            border: 2px solid black;
+            background-color: #ddd;
+            border-radius: 20px;
+        }
+
+        #menu {
+            position: fixed;
+            bottom: 20px;
+            cursor: pointer;
+        }
+        #menu:hover{
+            color: black;
+            border: 2px solid black;
+            background-color: #ddd;
+            border-radius: 20px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            width: 80vw;
+            height:100vh;
+        }
+
+        .overview {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            width: 80vw;
+        }
+
+        .overview > div {
+            border: 1px solid #ddd;
+            padding: 20px;
+            width: 30%;
+            text-align: center;
+        }
+        .overview > div:hover{
+            background-color: black;
+        }
+        #i1:hover{
+            color:white;
+        }
+        
+        .posts-transactions {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            width:40vw;
+        }
+
+        .posts-transactions> div {
+            border: 1px solid #ddd;
+            padding: 20px;
+        }
+        #posts{
+            height: 50vh;
+            width:90%;
+            border: 2px solid black;
+            margin:5px;
+            background-color: white;
+            border-radius: 10px;
+            
+        }
+
+        #transactions {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #ddd;
+            height:50vh;
+            padding: 20px;
+            margin: auto;
+            width: 90%;
+            border: 2px solid black;
+            background-color: white;
+            border-radius: 10px;
+            margin:5px;
+
+        }
+        div#transactions li{
+            width:fit-content;
+        }
+
+        #transactions ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #transactions li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            width: 100%;
+
+        }
+
+        #recurring-bills {
+            border: 2px solid black;
+            padding: 20px;
+            margin: 5px;
+            display: flex;
+            flex-direction: column;
+            width:80%;
+            height:40vh;
+            background-color: white;
+            border-radius: 10px;
+
+        }
+        .billsbudget {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            width:40vw;
+            
+        }
+
+        .billsbudget > div {
+            border: 1px solid #ddd;
+            padding: 20px;
+            width: 40%;
+        }
+        #i4{
+            border-radius: 10px;
+            margin:10px;
+        }
+        .a1{
+            display:flex;
+        }
+        #i9{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            width:100%;
+            height: 25%;
+        }
+        #i7{
+            display:grid;
+            grid-template-columns: repeat(2,1fr);
+            width:80%;
+            justify-content: space-around;
+        }
+        #it{
+            width:90%;
+            background-color:  lightgoldenrodyellow;
+            height:50%;
+            border-radius: 10px;
+            margin:10px;
+        }
+        #budgets{
+            margin: 10px;
+            height:60vh;
+        }
+        #img{
+            width:20px;
+            height:20px
+        }
+        button{
+            font-size: medium;
+            background-color: aliceblue;
+        }
+        #recurring-bills>div{
+            display: flex;
+            justify-content: space-between;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+        #i15{
+            width:80%;
+            display:flex;
+            border:2px solid black;
+            border-radius: 10px;
+            background-color: white;
+            margin:5px;
+        }
+        #imgc{
+            width:200px;
+            height:200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        @media (max-width: 650px) {
+            .a1{
+                display: grid;
+                grid-template-columns: repeat(1,1fr);
+            }
+            .overview{
+                display: grid;
+                grid-template-columns: repeat(1,1fr);
+            }
+
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+        .a1{
+                display: grid;
+                grid-template-columns: repeat(2,1fr);
+            }
+            .overview{
+                display: grid;
+                grid-template-columns: repeat(2,1fr);
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="finance">
+        <h2>finance</h2>
+        <ul>
+            <li id="c1"><i class="material-icons" style="color:green">home</i>
+            Overview
+           </li>
+            <li id="c1"><i class="material-icons" style="color:black">swap_vertical_circle</i>
+                Transactions
+            </li>
+            <li id="c1"><i class="material-icons" style="color:aqua">request_quote</i>
+                Budgets
+            </li>
+            <li id="c1"><i class="material-icons" style="color:rgb(15, 3, 56)">local_atm</i>
+                Pots
+            </li>
+            <li id="c1"><i class="material-icons">menu</i>
+                Recurring Bills
+            </li>
+        </ul>
+        <div id="menu"><i class="material-icons">menu_open</i>Minimize Menu</div>
+    </div>
+
+    <div class="content">
+        <h1 >Overview</h1>
+
+        <div class="overview">
+            <div id="i4">
+                <div id="i1">
+                <h3 >Current Balance</h3>
+                <p >$4,836.00</p>
+                </div>
+            </div>
+            <div id="i4">
+                <div id="i1">
+                <h3>Income</h3>
+                <p >$3,814.25</p>
+                </div>
+            </div>
+            <div id="i4">
+                <div id="i1">
+                <h3 >Expenses</h3>
+                <p >$1,700.50</p>
+                </div>
+            </div>
+        </div>
+        <div class="a1"> 
+          <div class="posts-transactions">
+             <div id="posts">
+                <h3>Pots</h3>
+                <div id="i7">
+                 <div id="it">   
+                <p><i class="material-icons" style="color:rgb(15, 3, 56)">local_atm</i>Total Saved</p>
+                <p style="font-size: medium;color: black;font-weight: bolder;">$850</p>
+                </div>
+                <div id="i9">
+                <div>
+                <p>Savings</p>
+                <p style="font-size: medium;color: black;font-weight: bolder;">$159</p>
+                </div>
+                <div>
+                <p>Concert Ticket</p>
+                <p style="font-size: medium;color: black;font-weight: bolder;"> $110</p>
+                </div>
+                <div>
+                <p>New Laptop</p>
+                <p style="font-size: medium;color: black;font-weight: bolder;">$10</p>
+                </div>
+                <div>
+                <p>Gih</p>
+                <p style="font-size: medium;color: black;font-weight: bolder;">$40</p>
+                </div>
+                </div>
+                </div>
+                <p><a href="#">See Details</a></p>
+            </div>
+             <div id="transactions">
+                <h3>Transactions</h3>
+                <ul>
+                    <li><span><img src="https://a.storyblok.com/f/191576/1174x882/43ea391290/round_profile_picture_hero_after.webp" alt="" id="img">Emma Richardson</span> <span style="color: aquamarine;font-size: medium;font-weight: bolder;">+$75.50</span> <span>19 Aug 2024</span></li>
+                    <li><span><img src="https://img.freepik.com/free-photo/christmas-tree-shaped-snacks_114579-47514.jpg" alt=""id="img">Savory Bites Bistro</span> <span style="color: antiquewhite;font-size: medium;font-weight: bolder;">-$55.50</span> <span style>19 Aug 2024</span></li>
+                    <li><span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqkUYrITWyI8OhPNDHoCDUjGjhg8w10_HRqg&s" alt="" id="img">Daniel Carter</span> <span style="color: rgb(255, 217, 127);font-size: medium;font-weight: bolder;">-$42.30</span> <span >18 Aug 2024</span></li>
+                    <li><span><img src="https://i0.wp.com/studiolorier.com/wp-content/uploads/2018/10/Profile-Round-Sander-Lorier.jpg?ssl=1" alt="" id="img">Sun Park</span> <span style="color: rgb(246, 255, 127);font-size: medium;font-weight: bolder;">+$120.00</span> <span >17 Aug 2024</span></li>
+                    <li><span><img src="https://img.freepik.com/free-photo/website-hosting-concept-with-bright-light_23-2149406783.jpg" alt="" id="img">Urban Services Hub</span> <span style="color: rgb(138, 127, 255);font-size: medium;font-weight: bolder;">-$65.00</span> <span >17 Aug 2024</span></li>
+                </ul>
+                <a href="#">View All</a>
+              </div>
+           </div>   
+         <div class="billsbudget">
+            <div id="i15">
+           <div id="budgets">
+            <h3>Budgets</h3>
+            <p >Entertainment</p>
+            <p style="font-size: medium;color: black;font-weight: bolder;"> $50.00</p>
+            <p >Bills:</p>
+            <p style="font-size: medium;color: black;font-weight: bolder;">$750.00</p>
+            <p>Dining Out: </p>
+            <p style="font-size: medium;color: black;font-weight: bolder;"> $75.00</p>
+            <p>Personal Care:</p>
+            <p style="font-size: medium;color: black;font-weight: bolder;">$100.00</p>
+            <p><a href="#">See Details</a></p>
+          </div>
+          <div>
+            <img id="imgc"src="https://media.istockphoto.com/id/611996270/photo/pie-chart-concept-3d-illustration.jpg?s=612x612&w=0&k=20&c=4ig5awClA1GIHM3Vfnc16ikL1dkFxNru5iEecdUl_3U=">
+          </div>
+          </div>
+          <div id="recurring-bills">
+            <h3>Recurring Bills</h3>
+            <div>
+            <p>Paid Bills:</p>
+            <p>$190.00</p>
+            </div>
+            <div>
+            <p>Total Upcoming:</p>
+            <p>$194.98</p>
+            </div>
+            <div>
+            <p>Due Soon:<p>
+            <p> $59.98</p>
+            </div>
+            <p><a href="#">See Details</a></p>
+         </div>
+       </div>
+    </div>
+    </div>
+</body>
+</html>
