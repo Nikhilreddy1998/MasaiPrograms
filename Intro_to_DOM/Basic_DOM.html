@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic_DOM</title>
+</head>
+<body>
+    <ul>
+        <li>Hyderabad.Telangana.India</li>
+        <li>Chicago.Illionius.USA</li>
+        <li>Uttarakhand.Haridwar.India</li>
+    </ul>
+    <button onclick="handleclick()">Add Item</button>
+    
+</body>
+</html>
+<script>
+    let ul=document.querySelector('ul')
+    function handleclick(){
+        let newli=document.createElement('li')
+        newli.textContent="New list"
+        ul.appendChild(newli)
+        let listitems=document.querySelectorAll('ul li')
+        listitems.forEach((element,index)=> {
+            if(index%2==1){
+                element.style.fontWeight="bold"
+                element.style.color="blue"
+            }
+            else{
+                element.style.fontWeight="italic"
+                element.style.color="red"
+                
+            }
+            
+        });
+    }
+</script>
