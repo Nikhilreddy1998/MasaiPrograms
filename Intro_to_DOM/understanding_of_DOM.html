@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic_DOM</title>
+</head>
+<body>
+    <div class="container">
+    <h1 id="i1">Intoduction to DOM</h1>
+    <p >DOM:Document Object Model</p>
+    <p >DOM:Document Object Model</p> 
+    <p >DOM:Document Object Model</p>
+    <p >DOM:Document Object Model</p>
+    </div>  
+</body>
+</html>
+<script>
+    let heading=document.getElementById('i1')
+    heading.innerText="Welcome to DOM"
+    let paragraph=document.getElementsByTagName('p')
+    for(let i=0;i<paragraph.length;i++)
+    {
+    paragraph[i].style.color="blue"
+    }
+    let div=document.querySelector('.container')
+    div.style.backgroundColor="yellow"
+</script>
