@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM_Create_Delete</title>
+</head>
+<body>
+    <div id="div">
+        <p>I am old paragraph</p>
+    </div>
+    <button onclick="add()">Add paragraph</button>
+    <button onclick="remove()">Remove paragraph</button>
+    
+</body>
+</html>
+<script>
+    let div=document.getElementById('div')
+   
+    function add(){
+         let p=document.createElement('p')
+         p.innerText="I am new paragraph"
+        div.appendChild(p)
+         }
+         function remove(){
+            let p=document.querySelector('p:last-of-type')
+            div.removeChild(p)
+         }
+</script>
