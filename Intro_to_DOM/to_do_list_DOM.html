@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DOM-cleaTo-Do List</title>
+<style>
+  .completed {
+    text-decoration: line-through;
+  }
+</style>
+</head>
+<body>
+
+<input type="text" id="taskInput" placeholder="Enter task">
+<button id="addTaskBtn">Add Task</button>
+
+<ul id="taskList"></ul>
+
+<script>
+  let taskInput = document.getElementById('taskInput')
+  let addTaskBtn = document.getElementById('addTaskBtn')
+  let taskList = document.getElementById('taskList')
+
+  addTaskBtn.addEventListener('click', () => {
+    let taskText = taskInput.value.trim()
+    if (taskText !== '') {
+      let listItem = document.createElement('li')
+      listItem.textContent = taskText;
+
+      let completeBtn = document.createElement('button')
+      completeBtn.textContent = 'Complete'
+      completeBtn.addEventListener('click', () => {
+        listItem.classList.toggle('completed')
+      })
+
+      let deleteBtn = document.createElement('button')
+      deleteBtn.textContent = 'Delete'
+      deleteBtn.addEventListener('click', () => {
+        taskList.removeChild(listItem)
+      })
+
+      listItem.appendChild(completeBtn)
+      listItem.appendChild(deleteBtn)
+      taskList.appendChild(listItem)
+      taskInput.value = ''
+    }
+  })
+</script>
+
+</body>
+</html>
