@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Event Propagation Exploration</title>
+<style>
+  #outer {
+    background-color: lightblue;
+    padding: 20px
+  }
+  #middle {
+    background-color: lightgreen;
+    padding: 20px;
+    margin: 10px
+  }
+  #inner {
+    background-color: lightcoral;
+    padding: 20px;
+    margin: 10px
+  }
+</style>
+</head>
+<body>
+
+<div id="outer">
+  Outer Div
+  <button id="outerButton">Outer Button</button>
+  <div id="middle">
+    Middle Div
+    <button id="middleButton">Middle Button</button>
+    <div id="inner">
+      Inner Div
+      <button id="innerButton">Inner Button</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+<script>
+  document.getElementById('outer').addEventListener('click', function() {
+    alert('Outer Div (Bubbling)')
+  })
+  document.getElementById('middle').addEventListener('click', function() {
+    alert('Middle Div (Bubbling)')
+  })
+  document.getElementById('inner').addEventListener('click', function() {
+    alert('Inner Div (Bubbling)')
+  })
+  document.getElementById('outerButton').addEventListener('click', function() {
+    alert('Outer Button (Bubbling)')
+  })
+  document.getElementById('middleButton').addEventListener('click', function() {
+    alert('Middle Button (Bubbling)')
+  })
+  document.getElementById('innerButton').addEventListener('click', function(event) {
+    alert('Inner Button (Bubbling)')
+    event.stopPropagation()
+  })
+
+  document.getElementById('outer').addEventListener('click', function() {
+    alert('Outer Div (Capturing)')
+  }, true)
+  document.getElementById('middle').addEventListener('click', function() {
+    alert('Middle Div (Capturing)')
+  }, true)
+  document.getElementById('inner').addEventListener('click', function() {
+    alert('Inner Div (Capturing)')
+  }, true)
+  document.getElementById('outerButton').addEventListener('click', function() {
+    alert('Outer Button (Capturing)')
+  }, true)
+  document.getElementById('middleButton').addEventListener('click', function() {
+    alert('Middle Button (Capturing)')
+  }, true)
+  document.getElementById('innerButton').addEventListener('click', function(event) {
+    alert('Inner Button (Capturing)')
+    event.stopPropagation()
+  }, true)
+
+</script>
