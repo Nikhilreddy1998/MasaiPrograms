@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Lookup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e6f7ff;
+        }
+        #weather-area {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <div id="weather-area">
+        <form id="cityForm">
+            <input type="text" id="cityName" placeholder="Enter location">
+            <button type="submit">Check Weather</button>
+        </form>
+        <div id="weatherInfo"></div>
+    </div>
+
+    <script>
+        let cityForm = document.getElementById('cityForm');
+        let cityNameInput = document.getElementById('cityName');
+        let weatherResult = document.getElementById('weatherInfo');
+
+        cityForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            let location = cityNameInput.value.trim();
+            if (!location) {
+                weatherResult.textContent = 'Please provide a location.';
+                return;
+            }
+            await getWeather(location);
+        });
+
+        async function getWeather(location) {
+            let apiKeyVal = 'YOUR_API_KEY';
+            let weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKeyVal}&units=metric`;
+            try {
+                let apiResponse = await fetch(weatherApiUrl);
+                if (!apiResponse.ok) {
+                    if (apiResponse.status === 404) {
+                        weatherResult.textContent = 'Location not found.';
+                    } else {
+                        weatherResult.textContent = 'Weather data retrieval failed.';
+                    }
+                    return;
+                }
+                let weatherData = await apiResponse.json();
+                let currentTemp = weatherData.main.temp;
+                let weatherDescription = weatherData.weather[0].description;
+                weatherResult.textContent = `Temperature in ${location}: ${currentTemp}°C, ${weatherDescription}`;
+            } catch (errorDetails) {
+                weatherResult.textContent = 'Network error encountered. Please retry.';
+            }
+        }
+    </script>
+</body>
+</html>
