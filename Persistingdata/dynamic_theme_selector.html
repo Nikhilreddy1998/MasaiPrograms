@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dynamic Theme Selector</title>
+<style>
+  body {
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .light {
+    background-color: white;
+    color: black;
+  }
+  .dark {
+    background-color: black;
+    color: white;
+  }
+  .blue {
+    background-color: lightblue;
+    color: darkblue;
+  }
+</style>
+</head>
+<body>
+
+  <label for="themeSelect" >Select Theme:</label>
+  <select id="themeSelect">
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+    <option value="blue">Blue</option>
+  </select>
+
+  <script>
+    let themeSelect = document.getElementById('themeSelect');
+    let body = document.body;
+
+    function setTheme(theme) {
+      body.className = theme;
+      sessionStorage.setItem('theme', theme);
+    }
+
+    function applyStoredTheme() {
+      const storedTheme = sessionStorage.getItem('theme');
+      if (storedTheme) {
+        setTheme(storedTheme);
+        themeSelect.value = storedTheme;
+      } else {
+        setTheme('light');
+      }
+    }
+
+    applyStoredTheme();
+
+    themeSelect.addEventListener('change', function() {
+      setTheme(this.value);
+    });
+  </script>
+
+</body>
+</html>
