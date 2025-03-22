@@ -1,0 +1,46 @@
+<form id="preferencesForm">
+    <label for="theme">Theme:</label>
+    <select id="theme">
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+    </select>
+  
+    <label for="language">Language:</label>
+    <select id="language">
+      <option value="en">English</option>
+      <option value="es">Spanish</option>
+    </select>
+  
+    <label for="notifications">Notifications:</label>
+    <input type="checkbox" id="notifications">
+  
+    <button type="submit">Save Preferences</button>
+  </form>
+  
+  <script>
+    let form = document.getElementById('preferencesForm');
+    let theme = document.getElementById('theme');
+    let language = document.getElementById('language');
+    let notifications = document.getElementById('notifications');
+  
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let preferences = {
+        theme: theme.value,
+        language: language.value,
+        notifications: notifications.checked,
+      };
+      localStorage.setItem('preferences', JSON.stringify(preferences));
+      alert('Preferences Saved!');
+    });
+  
+    window.onload = () => {
+      let preferences = localStorage.getItem('preferences');
+      if (preferences) {
+        let { theme, language, notifications } = JSON.parse(preferences);
+        theme.value = theme;
+        language.value = language;
+        notifications.checked = notifications;
+      }
+    };
+  </script>
