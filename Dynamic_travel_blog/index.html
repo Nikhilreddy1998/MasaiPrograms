@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic_travel_blog</title>
+    <style>
+        body {
+            background-color: bisque;
+        }
+        nav {
+            background-color: rgb(16, 17, 19);
+            display:flex;
+            justify-content: space-around;
+            text-align: center;
+            height:100px;
+        }
+        nav a {
+            display:inline-block;
+            height:100px;
+            font-size: larger;
+            color: aliceblue;
+        }
+        @media (max-width:768px){
+            nav {
+                flex-direction:column;
+            }
+            nav a{
+                display:block;
+            }
+
+        }
+        #img{
+            width: 100%;
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to USA</h1>
+    </header>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact Us</a>
+    </nav>
+     <img id="img" src="https://www.shutterstock.com/image-illustration/welcome-usa-road-sign-greeting-260nw-2107489064.jpg" alt="">   
+    <div id="dark-mode" class="dark-mode">Dark Mode</div>
+
+
+</body>
+</html>
+<script>
+    let darkmode=document.getElementById('dark-mode')
+    darkmode.addEventListener('click',()=>{
+        document.body.style.backgroundColor="black"
+
+    })
+</script>

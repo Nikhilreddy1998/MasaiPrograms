@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+        display:flex;
+        flex-direction:column;
+        }
+        label {
+            font-style: italic;
+        }
+        input {
+            font-weight: bold;
+        }
+        button{
+            background-color: cadetblue;
+        }
+    </style>
+</head>
+<body>
+    <section id="contact">
+        <h2>Contact US</h2>
+        <form id="contact-form">
+            <label for="name">Name</label>
+            <input type="text" id="name">
+            <label for="email">Email</label>
+            <input type="email" id="email">
+            <label for="phone">Number</label>
+            <input type="number" id="phone">
+            <label for="message">Message</label>
+            <textarea id="message"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+    <div id="container" onclick="displaydata()">Display</div>
+    
+</body>
+</html>
+<script>
+    let contactform=document.getElementById('contact-form')
+    contactform.addEventListener('submit',(e)=>{
+        e.preventDefault()
+        let name=document.getElementById('name').value
+        let email=document.getElementById('email').value
+        let phone=document.getElementById('phone').value
+        let message=document.getElementById('message').value
+         let formData={
+            name,email,phone,message
+         }
+         localStorage.setItem('contactform',JSON.stringify(formData))
+    })
+    function displaydata(){
+    let data=JSON.parse(localStorage.getItem('contactform'))
+    alert(data.name,"data stored")
+    }
+
+
+    
+
+</script>

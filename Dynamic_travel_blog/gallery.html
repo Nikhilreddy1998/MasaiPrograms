@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <style>
+        .gallery{
+            display:grid;
+            grid-template-columns: repeat(3,2fr);
+        }
+        .gallery img{
+            width:100%;
+        }
+        @media(max-width:768px){
+            .gallery{
+                grid-template-columns: repeat(1,1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <section id="gallery" class="gallery">
+        <h2>Gallery</h2>
+        <div class="caption">
+            <h4>Chicago</h4>
+            <img src="https://media.istockphoto.com/id/495622374/photo/sunrise-at-cloud-gate.jpg?s=612x612&w=0&k=20&c=734hxJQeGqVI-I_dAvdqCzAkZltaZKh3JJSjeMX-LL0=">
+            <img src="https://cdn.pixabay.com/photo/2020/06/28/00/04/chicago-5347435_1280.jpg">
+            <h4>California</h4>
+            <img src="https://media.istockphoto.com/id/478821794/photo/skyscrapers-of-los-angeles-skyline-architecture-urban-cityscape.jpg?s=612x612&w=0&k=20&c=NDZIvsRp8mQmY5h_DYIedD9rrx_jNu_sJ3oLuyV7a1E=">
+            <img src="https://media.gettyimages.com/id/1571494714/photo/view-of-golden-gate-bridge.jpg?s=612x612&w=gi&k=20&c=74rWr3mA2VqIQlHGF18JKBMNCaCRzIm_po9uWcuUx3Y=">
+            <h4>Newyork</h4>
+            <img src="https://media.istockphoto.com/id/523513953/photo/times-square-in-new-york-city.jpg?s=612x612&w=0&k=20&c=ibPzzIPHrsIdPElVpZYHyWyvqIN4VXTzNP5UXiQcpu8=">
+            <img src="https://cdn.pixabay.com/photo/2019/12/28/16/22/new-york-4725115_640.jpg">
+
+        </div>
+
+    </section>
+    
+</body>
+</html>
