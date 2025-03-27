@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .product-container{
+            display: grid;
+            grid-template-columns: repeat(2,200px);
+            gap: 20px;
+            border: 1px solid black;
+        }
+        .product-card{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+        }
+        .product-card img{
+            width: 200px;
+            height: 200px;
+           
+        }
+
+    </style>
+</head>
+<body>
+    <select name="" id="category" onchange="filterCategory()">
+        <option value="all">Select Category</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Industrial">Industrial</option>
+        <option value="Shoes">Shoes</option>
+        <option value="Baby">Baby</option>
+    </select>
+    <button id="search">search</button>
+    <div class="product-container"></div>
+</body>
+</html>
+<script>
+    
+    const productContainer= document.querySelector('.product-container');
+
+    async function filterCategory(){
+        const selectedCategory= document.querySelector('#category').value;
+        const BASE_URL='https://67e404d72ae442db76d2a214.mockapi.io/Products'
+        const url = new URL(BASE_URL);
+        if (selectedCategory !== "all") {
+            url.searchParams.append("category", encodeURIComponent(selectedCategory));
+        }
+        console.log(url.toString());
+        let res= await fetch(url.toString());
+
+        let products= await res.json();
+        
+        
+       
+        // const filteredProduct= selectedCategory==="all"?
+
+        // products:products.filter(product=>product.category===selectedCategory)  
+        // console.log(filteredProduct)
+        displayProduct(products);
+    }
+
+   function displayProduct(filteredProduct){
+    productContainer.innerHTML='';
+
+    filteredProduct.forEach(product => {
+            const productDiv= document.createElement('div');
+            productDiv.className='product-card';
+         
+            productDiv.innerHTML=
+            `
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>Price: $${product.price}</p>
+            `;
+            productContainer.appendChild(productDiv)
+
+            
+        });
+         
+    }
+     
+</script>

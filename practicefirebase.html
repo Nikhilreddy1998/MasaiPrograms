@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    async function fetchmovies(){
+        let res=await fetch("https://nikhil-1st-project-default-rtdb.asia-southeast1.firebasedatabase.app/movies.json")
+        let movies= await res.json()
+        console.log(movies)
+        let moviesarray=Object.entries(movies)
+        console.log(moviesarray)
+        /*let finaldata=moviesarray.map(([id,movie])=>
+        ({id,...movie}))
+        console.log(finaldata)
+        */
+       let newArray=[]
+        for(let key in movies)
+    {
+        newArray.push({id:key,...movies[key]})
+    }
+    console.log(newArray)
+        
+    
+    
+
+    }
+    fetchmovies()
+</script>

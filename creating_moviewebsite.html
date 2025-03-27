@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+          font-family:sans-serif;
+          text-align:center;
+          margin: 20px;
+          background-color:white;
+        }
+        input,button{
+            margin:5px;
+            padding:8px;
+        }
+        #movielist{
+            display:grid;
+            grid-template-columns: repeat(2,200px);
+            gap:20px;
+            justify-content:center;
+
+        }
+    </style>
+</head>
+<body>
+    <h2>firebase Movie Database</h2>
+    <input type="text" id="title" placeholder="movieTitle">
+    <input type="number" id="year" placeholder="year">
+    <input type="text" id="genre" placeholder="genre">
+    <input type="text" id="image" placeholder="ImageURL">
+    <button onclick="addmovie()">Add Movie</button>
+    <h3>Movie list</h3>
+    <div id="movielist"></div>
+</body>
+</html>
+<script>
+    async function addmovie(){
+        let movie={
+            title:document.document.getElementById('title').value,
+            year:document.getElementById('year').value,
+            genre:document.getElementById('genre').value,
+            image:document.getElementById('image').value
+        }
+        let res=await fetch("https://nikhil-2nd-project-default-rtdb.asia-southeast1.firebasedatabase.app/movies.json",{
+            method:'post',
+            headers:{
+                "Content-Type":'application/json',
+            },
+            body:JSON.stringify(movie)
+            })
+            document.getElementById('title').value=''
+            document.getElementById('year').value=''
+            document.getElementById('genre').value=''
+            document.getElementById('image').value=''
+
+        }
+        async function fetchMovies(){
+            let res=await fetch("https://nikhil-2nd-project-default-rtdb.asia-southeast1.firebasedatabase.app/movies.json")
+            let data=await res.json()
+            let movielist=document.getElementById("movielist")
+            movielist.innerHTML=""
+            let moviesArray=Object.entries(data).map(([id,movie])=>({id,...movie}))
+            moviesArray.forEach((movie)=>{
+                let moviecard=document.createElement('div')
+                moviecard.className='movie-card'
+                moviecard.innerHTML=`
+                <img src="${movie.img}" alt="${movie.title}">
+                <h4>${movie.title}</h4>
+                <p>${movie.genre}</p>
+                `
+                movielist.appendChild(moviecard)
+
+            })
+         }
+         fetchMovies()
+</script>
