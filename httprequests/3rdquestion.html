@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Post method</title>
+<style>
+  body {
+    font-family: sans-serif;
+    margin: 20px;
+  }
+
+  .user-list {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .user-list h2 {
+    margin-top: 0;
+  }
+
+  .user-list ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .user-form {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+
+  .user-form h2 {
+    margin-top: 0;
+  }
+
+  .user-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .user-form input[type="text"],
+  .user-form input[type="email"] {
+    width: 300px;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+
+  .user-form button {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<h1>POST method </h1>
+
+<div class="user-list">
+  <h2>Users Data</h2>
+  <ul id="user-list">
+    </ul>
+</div>
+
+<div class="user-form">
+  <h2>User details</h2>
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name" placeholder="entername">
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" placeholder="@gmail">
+
+  <button id="add-user">Submit</button>
+</div>
+
+<script>
+  let userList = document.getElementById('user-list');
+  let nameInput = document.getElementById('name');
+  let emailInput = document.getElementById('email');
+  let addUserButton = document.getElementById('add-user');
+
+  async function fetchUsers() {
+    try {
+      let response = await fetch('https://6566270664fcff8d7309990e.mockapi.io/users');
+      let users = await response.json();
+
+      userList.innerHTML = '';
+      users.forEach(user => {
+        let li = document.createElement('li');
+        li.textContent = `Name: ${user.name}, Email: ${user.email}`;
+        userList.appendChild(li);
+      });
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    }
+  }
+
+  async function addUser(name, email) {
+    try {
+      let response = await fetch('https://6566270664fcff8d7309990e.mockapi.io/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email })
+      });
+
+      if (response.ok) {
+        fetchUsers();
+        nameInput.value = '';
+        emailInput.value = '';
+      } else {
+        console.error('Failed to add user:', response.status);
+      }
+    } catch (error) {
+      console.error('Error adding user:', error);
+    }
+  }
+
+  addUserButton.addEventListener('click', () => {
+    let name = nameInput.value;
+    let email = emailInput.value;
+    if (name && email) {
+      addUser(name, email);
+    } else {
+      alert('Please enter both name and email.');
+    }
+  });
+
+  fetchUsers();
+</script>
+
+</body>
+</html>
