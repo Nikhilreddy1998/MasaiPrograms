@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="form-id" onsubmit="sendData(event)">
+        <label for="name-id">Name</label>
+        <input type="text" id="name-id">
+        <label for="email-id">Email</label>
+        <input type="email" id="email-id">
+        <label for="password-id">Password</label>
+        <input type="password" id="password-id">
+        <button id="register-btn">Register</button>
+    </form>
+    <section id="showMessage"></section>
+    
+</body>
+</html>
+<script>
+    async function sendData(event){
+        event.preventDefault();
+          let formData={
+            name: document.querySelector('#name-id').value,
+            email: document.querySelector('#email-id').value,
+            password: document.querySelector('#password-id').value
+          }
+         
+         btn=document.querySelector('#register-btn');
+         btn.disabled=true; 
+
+        try {
+            let response= await fetch('https://formvalidation-57ef2-default-rtdb.asia-southeast1.firebasedatabase.app/users.json',{
+                   method:'POST',
+                   headers:{
+                    "Content-Type":'application/json'
+                   },
+                   body: JSON.stringify(formData)
+          });
+          const messageSection= document.getElementById('showMessage');
+          if(response.ok){
+           
+            messageSection.innerText="submitted successfully";
+          }
+          else{
+            messageSection.innerText="Submission failed";
+          }
+        } catch (error) {
+            console.log(error)
+        }
+        finally{
+            document.querySelector('#name-id').value = '';
+            document.querySelector('#email-id').value = '';
+           document.querySelector('#password-id').value = '';
+            btn.disabled=false; 
+           
+        }
+          
+         }
+        
+
+      
+    
+</script>
