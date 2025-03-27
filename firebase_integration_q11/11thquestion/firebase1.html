@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+
+    <div class="container">
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Email</th>
+            </thead>
+            <tbody>
+                
+            </tbody>
+         
+        </table>
+    </div>
+  </body>
+</html>
+<script>
+  async function fetchData() {
+    try {
+        let response = await fetch("https://nikhil-1st-project-default-rtdb.asia-southeast1.firebasedatabase.app/users.json");
+         let data = await response.json();
+         let usersArray= Object.entries(data)
+        let finalData= usersArray.map(([id, userdata])=>({id,...userdata}))
+        console.log(finalData)
+        const tbody= document.querySelector('tbody');
+        console.log(tbody)
+        finalData.forEach(user=>{
+            const tr= document.createElement('tr');
+            tr.innerHTML=
+            `
+            <td>${user.name}</td>
+            <td>${user.email}></td>
+            `
+            tr.style.color='black'
+            console.log(tr)
+            tbody.appendChild(tr)
+        })
+       
+    } catch (error) {}
+  }
+  fetchData()
+</script>
