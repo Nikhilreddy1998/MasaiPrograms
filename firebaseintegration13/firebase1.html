@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update User Data</title>
+    <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .edit-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
+
+    <div class="edit-form" id="editForm">
+        <h2>Edit User</h2>
+        <form id="updateUserForm">
+            <input type="hidden" id="userId">
+            <label for="editName">Name:</label>
+            <input type="text" id="editName" name="name"><br><br>
+            <label for="editEmail">Email:</label>
+            <input type="email" id="editEmail" name="email"><br><br>
+            <button type="submit">Update</button>
+            <button type="button" onclick="closeEditForm()">Cancel</button>
+        </form>
+    </div>
+
+    <script>
+        async function fetchData() {
+            try {
+                let response = await fetch("https://nikhil-1st-project-default-rtdb.asia-southeast1.firebasedatabase.app/users.json");
+                let data = await response.json();
+                if (data) {
+                    let usersArray = Object.entries(data);
+                    let finalData = usersArray.map(([id, userdata]) => ({ id, ...userdata }));
+                    const tbody = document.querySelector('tbody');
+                    tbody.innerHTML = '';
+
+                    finalData.forEach(user => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${user.name}</td>
+                            <td>${user.email}</td>
+                            <td><button onclick="openEditForm('${user.id}', '${user.name}', '${user.email}')">Edit</button></td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+
+        fetchData();
+
+        function openEditForm(userId, name, email) {
+            document.getElementById('userId').value = userId;
+            document.getElementById('editName').value = name;
+            document.getElementById('editEmail').value = email;
+            document.getElementById('editForm').style.display = 'block';
+        }
+
+        function closeEditForm() {
+            document.getElementById('editForm').style.display = 'none';
+        }
+
+        document.getElementById('updateUserForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const userId = document.getElementById('userId').value;
+            const name = document.getElementById('editName').value;
+            const email = document.getElementById('editEmail').value;
+
+            try {
+                await fetch(`https://nikhil-1st-project-default-rtdb.asia-southeast1.firebasedatabase.app/users/${userId}.json`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name, email }),
+                });
+
+                closeEditForm();
+                fetchData();
+            } catch (error) {
+                console.error("Error updating data:", error);
+            }
+        });
+    </script>
+</body>
+</html>
