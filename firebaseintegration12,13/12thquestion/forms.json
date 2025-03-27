@@ -1,0 +1,118 @@
+{
+    "forms": [
+      {
+        "formId": "contactForm",
+        "title": "Contact Us",
+        "fields": [
+          {
+            "fieldId": "name",
+            "label": "Name",
+            "type": "text",
+            "required": true,
+            "placeholder": "Enter your name"
+          },
+          {
+            "fieldId": "email",
+            "label": "Email",
+            "type": "email",
+            "required": true,
+            "placeholder": "Enter your email address"
+          },
+          {
+            "fieldId": "message",
+            "label": "Message",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "Enter your message"
+          },
+          {
+            "fieldId": "subject",
+            "label": "Subject",
+            "type": "select",
+            "required": true,
+            "options": [
+              { "value": "inquiry", "label": "General Inquiry" },
+              { "value": "support", "label": "Technical Support" },
+              { "value": "sales", "label": "Sales Question" }
+            ]
+          },
+          {
+            "fieldId":"newsletter",
+            "label":"Subscribe to Newsletter",
+            "type":"checkbox",
+            "required":false
+          }
+        ],
+        "submitButtonText": "Submit"
+      },
+      {
+        "formId": "registrationForm",
+        "title": "User Registration",
+        "fields": [
+          {
+            "fieldId": "username",
+            "label": "Username",
+            "type": "text",
+            "required": true,
+            "placeholder": "Enter your username"
+          },
+          {
+            "fieldId": "password",
+            "label": "Password",
+            "type": "password",
+            "required": true,
+            "placeholder": "Enter your password"
+          },
+          {
+            "fieldId": "confirmPassword",
+            "label": "Confirm Password",
+            "type": "password",
+            "required": true,
+            "placeholder": "Confirm your password"
+          },
+          {
+            "fieldId": "dateOfBirth",
+            "label": "Date of Birth",
+            "type": "date",
+            "required": true
+          },
+          {
+            "fieldId": "profilePicture",
+            "label": "Profile Picture",
+            "type": "file",
+            "required": false,
+            "accept": "image/*"
+          }
+        ],
+        "submitButtonText": "Register"
+      },
+       {
+        "formId": "surveyForm",
+        "title": "Customer Survey",
+        "fields": [
+          {
+            "fieldId": "rating",
+            "label": "How satisfied are you?",
+            "type": "radio",
+            "required": true,
+            "options": [
+              { "value": "1", "label": "Very Unsatisfied" },
+              { "value": "2", "label": "Unsatisfied" },
+              { "value": "3", "label": "Neutral" },
+              { "value": "4", "label": "Satisfied" },
+              { "value": "5", "label": "Very Satisfied" }
+            ]
+          },
+          {
+            "fieldId": "comments",
+            "label": "Additional Comments",
+            "type": "textarea",
+            "required": false,
+            "placeholder": "Enter your comments"
+          }
+        ],
+        "submitButtonText": "Submit Survey"
+      }
+  
+    ]
+  }

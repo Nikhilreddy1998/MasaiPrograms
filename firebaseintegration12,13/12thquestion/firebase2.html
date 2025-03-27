@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <form action="" id="form-id" onchange="fetchData()">
+            <label for="name-id">Name</label>
+            <input type="text" id="name-id" required>
+            <label for="email-id">Email</label>
+            <input type="email" id="email-id" required>
+            <button class="register">Register</button>
+        </form>
+    </div>
+</body>
+</html>
+<script>
+
+    const name= document.querySelector('#name-id').value;
+    const email= document.querySelector('#email-id').value;
+    let data={
+        name,email
+    }
+    button.disabled=true;
+    async function fetchData(){
+    const button = document.querySelector('.register');
+    button.disabled=true;   
+
+     try {
+        let response= await fetch('https://nikhil-firebase-2-default-rtdb.asia-southeast1.firebasedatabase.app/forms.json',{
+            method:'POST',
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify(data)
+        })
+        
+     } catch (error) {
+        console.log('error occured')
+     }
+     finally{
+          button.disabled=false;
+         document.querySelector('#name-id').value=''
+         document.querySelector('#email-id').value=''
+     }
+     
+    }
+   
+</script>
