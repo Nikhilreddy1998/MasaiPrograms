@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <style>
+        .container {
+            display: flex;
+        }
+
+        .books,
+        .members {
+            width: 50%;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        input,
+        select,
+        button {
+            margin-bottom: 5px;
+            padding: 5px;
+        }
+
+        .pagination {
+            margin-top: 10px;
+        }
+
+        .pagination button {
+            padding: 5px 10px;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="books">
+            <h2>Books</h2>
+
+            <div id="book-filters">
+                <label for="genre-filter">Genre:</label>
+                <select id="genre-filter">
+                    <option value="">All</option>
+                    <option value="Science Fiction">Science Fiction</option>
+                    <option value="Dystopian">Dystopian</option>
+                    </select>
+                <label for="author-filter">Author:</label>
+                <input type="text" id="author-filter">
+                <label for="availability-filter">Availability:</label>
+                <select id="availability-filter">
+                    <option value="">All</option>
+                    <option value="true">Available</option>
+                    <option value="false">Unavailable</option>
+                </select>
+            </div>
+
+            <div id="book-sort">
+                <label for="sort-by">Sort By:</label>
+                <select id="sort-by">
+                    <option value="title">Title</option>
+                    <option value="author">Author</option>
+                    <option value="publishedYear">Published Year</option>
+                </select>
+                <label for="sort-order">Order:</label>
+                <select id="sort-order">
+                    <option value="asc">Ascending</option>
+                    <option value="desc">Descending</option>
+                </select>
+            </div>
+
+            <div id="book-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Genre</th>
+                            <th>Year</th>
+                            <th>Available</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+
+            <div id="book-pagination" class="pagination">
+                <button id="prev-book-page">Previous</button>
+                <span id="current-book-page">1</span>
+                <button id="next-book-page">Next</button>
+            </div>
+
+            <div id="book-crud">
+                <h3>Add New Book</h3>
+                <input type="text" id="new-book-title" placeholder="Title">
+                <input type="text" id="new-book-author" placeholder="Author">
+                <input type="text" id="new-book-genre" placeholder="Genre">
+                <input type="number" id="new-book-year" placeholder="Year">
+                <select id="new-book-available">
+                    <option value="true">Available</option>
+                    <option value="false">Unavailable</option>
+                </select>
+                <button id="add-book">Add Book</button>
+            </div>
+        </div>
+
+        <div class="members">
+            <h2>Members</h2>
+
+            <div id="member-filters">
+                <label for="active-filter">Active:</label>
+                <select id="active-filter">
+                    <option value="">All</option>
+                    <option value="true">Active</option>
+                    <option value="false">Inactive</option>
+                </select>
+                <label for="membership-date-filter">Joined After:</label>
+                <input type="date" id="membership-date-filter">
+            </div>
+
+            <div id="member-sort">
+                <label for="member-sort-by">Sort By:</label>
+                <select id="member-sort-by">
+                    <option value="name">Name</option>
+                    <option value="membershipDate">Membership Date</option>
+                </select>
+                <label for="member-sort-order">Order:</label>
+                <select id="member-sort-order">
+                    <option value="asc">Ascending</option>
+                    <option value="desc">Descending</option>
+                </select>
+            </div>
+
+            <div id="member-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Membership Date</th>
+                            <th>Active</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+
+            <div id="member-pagination" class="pagination">
+                <button id="prev-member-page">Previous</button>
+                <span id="current-member-page">1</span>
+                <button id="next-member-page">Next</button>
+            </div>
+
+            <div id="member-crud">
+                <h3>Add New Member</h3>
+                <input type="text" id="new-member-name" placeholder="Name">
+                <input type="date" id="new-member-date" placeholder="Membership Date">
+                <select id="new-member-active">
+                    <option value="true">Active</option>
+                    <option value="false">Inactive</option>
+                </select>
+                <button id="add-member">Add Member</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
