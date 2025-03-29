@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .user-card{
+            display: flex;
+            gap: 20px;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="userContainer"></div>
+    <div class="paginationContainer"></div>
+  </body>
+</html>
+<script>
+  const API_URL = "https://jsonplaceholder.typicode.com/users";
+  const userContainer = document.getElementById("userContainer");
+  const paginationContainer=document.querySelector('.paginationContainer')
+  let currentpage = 1;
+  let usersPerPage = 6;
+  
+  let users;
+  let totalPages=2
+  //fetch user data
+  async function fetchData(page) {
+    try {
+      userContainer.innerHTML = `<h1>Loading.....</h1>`;
+      let response = await fetch(
+        `${API_URL}?_page=${page}&_limit=${usersPerPage}`
+      );
+      if (!response.ok) throw new Error("Failed to fetch the data");
+      users = await response.json();
+      displayData(users);
+      setUpPagination()
+     
+    } catch (error) {}
+  }
+  async function displayData(users) {
+    userContainer.innerHTML = "";
+    users.forEach((user) => {
+      const userCard = document.createElement("div");
+      userCard.className = "user-card";
+      userCard.innerHTML = `
+            <h2>${user.username}</h2>
+            <h2>${user.email}</h2>
+            `;
+            userContainer.appendChild(userCard);  
+    });
+  }
+  function setUpPagination(){
+    paginationContainer.innerHTML = '';
+    let totalPg= Math.ceil(10/usersPerPage);
+    
+console.log(totalPg)
+    //const previous button
+    const prevBtn= document.createElement('button');
+    prevBtn.innerText='Previous';
+    prevBtn.disabled=currentpage==1;
+
+    prevBtn.addEventListener('click',()=>{
+        if(currentpage>1){
+            currentpage--;
+            fetchData(currentpage)
+            
+        }
+    })
+    paginationContainer.appendChild(prevBtn)
+
+    const pageInfo= document.createElement('span');
+    pageInfo.innerText=` Page ${currentpage} of ${totalPg} `
+    paginationContainer.appendChild(pageInfo);
+
+    //const next button
+    const nextBtn= document.createElement('button');
+    nextBtn.innerText='Next';
+    nextBtn.disabled=currentpage===totalPg;
+
+    nextBtn.addEventListener('click',()=>{
+        if(currentpage<totalPg){
+            currentpage++;
+         fetchData(currentpage)
+           
+        }
+    })
+    paginationContainer.appendChild(nextBtn)
+}
+  fetchData(currentpage);
+ 
+
+</script>
