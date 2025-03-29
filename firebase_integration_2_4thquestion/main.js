@@ -1,4 +1,4 @@
-// Firebase Initialization (Replace with your actual config)
+
 const firebaseConfig = {
     apiKey: "AIzaSyCfvkSpyl1MJD8jlgf6ibBpntABs-AegAQ",
     authDomain: "fire-base-integration-2-4thq.firebaseapp.com",
@@ -12,7 +12,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-// --- Utility Functions ---
+
 function getElement(id) {
     return document.getElementById(id);
 }
@@ -21,7 +21,7 @@ function clearElementContent(id) {
     getElement(id).innerHTML = '';
 }
 
-// --- Data Fetching ---
+
 async function getBooks() {
     const snapshot = await db.ref("books").once("value");
     const data = snapshot.val();
@@ -34,15 +34,15 @@ async function getMembers() {
     return data ? Object.entries(data).map(([key, value]) => ({ ...value, id: key })) : [];
 }
 
-// --- CRUD Operations ---
+
 async function createBook(book) {
     try {
         const newBookRef = db.ref("books").push();
         await newBookRef.set(book);
-        return true; // Indicate success
+        return true; 
     } catch (error) {
         console.error("Error creating book:", error);
-        return false; // Indicate failure
+        return false; 
     }
 }
 
@@ -97,7 +97,7 @@ async function deleteMember(id) {
     }
 }
 
-// --- Filtering ---
+
 function filterBooks(books, filters) {
     return books.filter(book => {
         if (filters.genre && book.genre !== filters.genre) return false;
@@ -115,7 +115,7 @@ function filterMembers(members, filters) {
     });
 }
 
-// --- Sorting ---
+
 function sortBooks(books, sortBy, order = 'asc') {
     return [...books].sort((a, b) => {
         let comparison = 0;
@@ -134,7 +134,7 @@ function sortMembers(members, sortBy, order = 'asc') {
     });
 }
 
-// --- Pagination ---
+
 function paginate(array, pageSize, pageNumber) {
     const startIndex = (pageNumber - 1) * pageSize;
     const endIndex = startIndex + pageSize;
@@ -147,7 +147,7 @@ let currentBookPage = 1;
 const membersPerPage = 5;
 let currentMemberPage = 1;
 
-// --- State Persistence ---
+
 function saveState(key, data) {
     localStorage.setItem(key, JSON.stringify(data));
 }
@@ -157,7 +157,7 @@ function loadState(key) {
     return data ? JSON.parse(data) : null;
 }
 
-// --- Display Functions ---
+
 function displayBooks(books) {
     const bookTableBody = getElement('book-list').querySelector('tbody');
     clearElementContent(bookTableBody);
@@ -170,11 +170,11 @@ function displayBooks(books) {
         row.insertCell().textContent = book.publishedYear;
         row.insertCell().textContent = book.available ? 'Yes' : 'No';
 
-        // Add update and delete buttons
+
         const actionsCell = row.insertCell();
         const updateButton = document.createElement('button');
         updateButton.textContent = 'Update';
-        updateButton.addEventListener('click', () => openUpdateBookModal(book)); // Implement this function
+        updateButton.addEventListener('click', () => openUpdateBookModal(book)); 
         actionsCell.appendChild(updateButton);
 
         const deleteButton = document.createElement('button');
@@ -206,7 +206,7 @@ function updatePaginationDisplay(currentPageElement, currentPage) {
     currentPageElement.textContent = currentPage;
 }
 
-// --- Event Handlers ---
+
 function setupBookEventListeners() {
     const genreFilter = getElement('genre-filter');
     const authorFilter = getElement('author-filter');

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Novels List</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+<body>
+    <h1>Novels List</h1>
+
+    <div id="filters">
+        <label for="releaseYearStart">Release Year Start:</label>
+        <input type="number" id="releaseYearStart">
+        <label for="releaseYearEnd">Release Year End:</label>
+        <input type="number" id="releaseYearEnd">
+        <button onclick="applyFilters()">Apply Filters</button>
+    </div>
+
+    <div id="sort">
+        <button onclick="sortAscending('title')">Sort by Title (Ascending)</button>
+        <button onclick="sortDescending('title')">Sort by Title (Descending)</button>
+        <button onclick="sortAscending('releaseYear')">Sort by Release Year (Ascending)</button>
+        <button onclick="sortDescending('releaseYear')">Sort by Release Year (Descending)</button>
+    </div>
+
+    <div id="search">
+        <input type="text" id="searchInput" placeholder="Search by title or author">
+    </div>
+
+    <table id="novelsTable">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Release Year</th>
+                <th>Genre</th>
+            </tr>
+        </thead>
+        <tbody>
+            </tbody>
+    </table>
+
+    <script>
+        //later this week will do using firebase data
+        const novelsData = [
+            { title: "The Cloud Adventure", author: "Jane Smith", releaseYear: 2020, genre: "Fantasy" },
+            { title: "Return of the Lost Wolf", author: "Liam Swift", releaseYear: 2018, genre: "Action" },
+            { title: "The Journey Begins", author: "Sarah Brown", releaseYear: 2022, genre: "Adventure" },
+            { title: "The Last Knight", author: "Mark White", releaseYear: 2021, genre: "Fantasy" }
+        ];
+
+        let currentNovels = [...novelsData];
+
+        function displayNovels(novels) {
+            const tableBody = document.querySelector("#novelsTable tbody");
+            tableBody.innerHTML = "";
+
+            novels.forEach(novel => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${novel.title}</td>
+                    <td>${novel.author}</td>
+                    <td>${novel.releaseYear}</td>
+                    <td>${novel.genre}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function applyFilters() {
+            const startYear = document.getElementById("releaseYearStart").value;
+            const endYear = document.getElementById("releaseYearEnd").value;
+
+            let filteredNovels = novelsData;
+
+            if (startYear) {
+                filteredNovels = filteredNovels.filter(novel => novel.releaseYear >= parseInt(startYear));
+            }
+
+            if (endYear) {
+                filteredNovels = filteredNovels.filter(novel => novel.releaseYear <= parseInt(endYear));
+            }
+
+            currentNovels = filteredNovels;
+            displayNovels(currentNovels);
+        }
+
+        function sortAscending(sortBy) {
+            currentNovels.sort((a, b) => {
+                if (a[sortBy] < b[sortBy]) return -1;
+                if (a[sortBy] > b[sortBy]) return 1;
+                return 0;
+            });
+            displayNovels(currentNovels);
+        }
+
+        function sortDescending(sortBy) {
+            currentNovels.sort((a, b) => {
+                if (a[sortBy] < b[sortBy]) return 1;
+                if (a[sortBy] > b[sortBy]) return -1;
+                return 0;
+            });
+            displayNovels(currentNovels);
+        }
+
+        document.getElementById("searchInput").addEventListener("input", function () {
+            const searchTerm = this.value.toLowerCase();
+            const filteredNovels = novelsData.filter(novel => 
+                novel.title.toLowerCase().includes(searchTerm) || novel.author.toLowerCase().includes(searchTerm)
+            );
+            currentNovels = filteredNovels;
+            displayNovels(currentNovels);
+        });
+
+        displayNovels(currentNovels);
+    </script>
+</body>
+</html>
