@@ -1,7 +1,7 @@
 {
     "books":{
         "book1":{
-            "tiltle":"theory of physics",
+            "title":"theory of physics",
             "subject":"physics",
             "standard":"12th"
 
