@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Notes</title>
+</head>
+<body>
+    <main>
+        <section>
+            <h1>Create Notes</h1>
+            <form id="note-form">
+                <label for="title">Title </label>
+                <input type="text" id="title" placeholder="title name" required>
+                <label for="subject">Name of subject </label>
+                <input type="text" id="subject" placeholder="subject name" required>
+                <label for="standard">Standard </label>
+                <input type="Number" id="standard" placeholder="enter standard" required>
+                <label for="description">Description </label>
+                <textarea id="description" name="description" placeholder="enter description"></textarea>
+                <label for="priority">Priority</label>
+                <select id="priority" name="priority">
+                    <option value="high">High</option>
+                    <option value="medium">Medsium</option>
+                    <option value="low">Low</option>
+                </select>
+                <button onclick="addnotes()">addnotes</button>
+            </form>
+            <div id="form-message"></div>
+        </section>
+    </main>
+    <script>
+        async function addnotes(){
+            let notes={
+                title:document.getElementById('title').value,
+                subject:document.getElementById('subject').value,
+                standard:document.getElementById('standard').value,
+
+            }
+            let res=await fetch('https://collabarative-book-library-default-rtdb.asia-southeast1.firebasedatabase.app/books.json',{
+                method:'POST',
+                headers:{
+                    "Content-Type":'application/json',
+                },
+                body:JSON.stringify(notes)
+                })
+                document.getElementById('title').value=''
+                document.getElementById('subject').value=''
+                document.getElementById('standard').value=''
+
+         }
+
+    </script>
+    
+</body>
+</html>

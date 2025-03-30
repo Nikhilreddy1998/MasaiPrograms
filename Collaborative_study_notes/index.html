@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborative Study notes</title>
+    <style>
+        body {
+            background-color: rgb(131, 110, 85);
+            margin: 10px;
+            padding:10px;
+
+        }
+        header {
+            background-color: rgb(121, 131, 150);
+            padding: 20px;
+            color: burlywood;
+            border-radius: 10px;
+        }
+        nav ul{
+            display:flex;
+            justify-content:space-around;
+        };
+        nav li{
+            margin: 10px;
+            padding: 10px;
+            color: rgb(3, 13, 25);
+        }
+        nav a{
+            color: rgb(2, 24, 2);
+            background-color: rgb(247, 245, 246);
+            border-radius: 5px;
+            font-size: large;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+        footer{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+        #img {
+            
+            max-width: 600px;
+            height: 400px;
+        }
+        main{
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            border-radius: 5px;
+        }
+        #h1 {
+            background-color: rgb(14, 7, 79);
+            color: rgb(152, 124, 124);
+
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="create.html">Create Notes</a></li>
+                <li><a href="view.html">View Notes</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+            <button id="menu-btn">⇶</button>
+        </nav>
+    </header>
+    <main>
+    <h1 id="h1">COLLABORATIVE STUDY NOTES</h1>
+    </main>
+    <footer>
+        <img id="img"src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bGlicmFyeXxlbnwwfHwwfHx8MA%3D%3D">
+    </footer>
+    <div>
+        <label>Dark Mode</label>
+        <button id="dark-mode" onclick="handleclick()">On Dark Mode</button>
+    </div>
+   <script>
+    function handleclick(){
+    let darkmode=document.getElementById('dark-mode')
+   
+    document.body.style.backgroundColor='black'
+    }
+   </script>
+    
+</body>
+</html>

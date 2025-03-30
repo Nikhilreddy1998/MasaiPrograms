@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View notes</title>
+</head>
+<body>
+    <section>
+    <h1>You can view notes here</h1>
+  <button onclick="fetchbooks()">Display Notes</button>
+ <div id="noteslist"></div>
+  <section>
+</body>
+<script>
+     async function fetchbooks(){
+            let res=await fetch("https://collabarative-book-library-default-rtdb.asia-southeast1.firebasedatabase.app/books.json")
+            let data =await res.json()
+            let noteslist=document.getElementById('noteslist')
+            noteslist.innerhtml=''
+            let notesArray=Object.entries(data).map(([id,book])=>({id,...book}))
+            notesArray.forEach((book)=>{
+                let notecard=document.createElement('div')
+                notecard.className='note-card'
+                notecard.innerHTML=`
+                <h2>${book.title}</h3>
+                <h3>${book.subject}</h3>
+                <h4>${book.standard}</h4>
+                `
+                noteslist.appendChild(notecard)
+            })
+         }
+</script>
+</html>
