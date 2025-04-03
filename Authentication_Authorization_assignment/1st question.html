@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+</head>
+<body>
+    <div id="register-user">
+        <h2>Register The User</h2>
+        <input type="text" placeholder="Enter the name" id="register-input" />
+        <input
+          type="password"
+          placeholder="enter the password"
+          id="register-password"
+        />
+        <input type="email" placeholder="enter the mail" id="register-email" />
+        <button id="register-btn">Register</button>
+      </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
+        import {
+        getAuth,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        onAuthStateChanged,
+        signOut,
+      } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+      import { getDatabase , ref, 
+        set } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyDecX_AqfJ_RxEazNTVYluX1ejQ97TOFBU",
+          authDomain: "auth-976da.firebaseapp.com",
+          projectId: "auth-976da",
+          storageBucket: "auth-976da.firebasestorage.app",
+          messagingSenderId: "614107399907",
+          appId: "1:614107399907:web:de047e55c4b6e7a599e7d6",
+          measurementId: "G-E1ZPNHKL6R"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const auth = getAuth(app);
+      const database = getDatabase(app);
+      document.getElementById('register-btn').addEventListener('click',()=>{
+        let name= document.getElementById('register-input').value;
+        let email= document.getElementById('register-email').value;
+        let password= document.getElementById('register-password').value;
+        createUserWithEmailAndPassword(auth,email,password)
+        .then((usercredential)=>{
+            let users= usercredential.user;
+            alert('Registration Successful! Please log in')
+            // storing the user in firebase database using the set() method 
+            set(ref(database,'users/'+ users.uid),{
+                 username:name,
+                 email:email
+            })
+        })
+        .catch(error=>{
+            console.log('error', error)
+        })
+      })
+      </script>
+</body>
+</html>
