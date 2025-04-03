@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="enter the movie name" id="input-movie">
+
+</body>
+</html>
+
+<script>
+    let timer;
+    document.getElementById('input-movie').addEventListener('input',(e)=>{
+       
+       let inputvalue= e.target.value;
+       clearTimeout(timer)
+      timer= setTimeout(()=>{
+        searchMovie(inputvalue)
+       
+       },2000)
+       
+    })
+   async function searchMovie(query){
+    let response= await fetch(`http://www.omdbapi.com/?apikey=ac1ec4e9&s=${query}`);
+    let movies= await response.json();
+    console.log(movies.Search)
+   }
+</script>
