@@ -3,51 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Throttled Image Slider</title>
+    <style>
+        #imageContainer img {
+            max-width: 600px;
+            max-height: 400px;
+        }
+    </style>
 </head>
 <body>
     <div class="displayData">
         <div id="imageContainer"></div>
-        <button id="previousBtn" onclick="previousImage()">previous</button>
-        <button id="nextBtn" onclick=" nextImage()">Next</button>
+        <button id="previousBtn">Previous</button>
+        <button id="nextBtn">Next</button>
+        <p id="slideNumber"></p>
     </div>
-</body>
 
+    <script>
+        const imageContainer = document.getElementById('imageContainer');
+        const previousBtn = document.getElementById('previousBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const slideNumber = document.getElementById('slideNumber');
+
+        let currentIndex = -1;
+        let images = [];
+        let preLoadImage = null;
+        let lastClickTime = 0;
+        let clickCount = 0;
+
+        async function fetchAndPreloadImage() {
+            let response = await fetch('https://picsum.photos/600/400?random');
+            let imageURL = response.url;
+            preLoadImage = new Image();
+            preLoadImage.src = imageURL;
+            if (images.length === 0) {
+                images.push(imageURL);
+                currentIndex = 0;
+                displayImage(imageURL);
+            }
+        }
+
+        function displayImage(image) {
+            imageContainer.innerHTML = `<img src="${image}" alt="img">`;
+            slideNumber.textContent = `Slide: ${currentIndex + 1}`;
+        }
+
+        function handleImageChange(changeDirection) {
+            const currentTime = Date.now();
+            if (currentTime - lastClickTime < 1000) {
+                clickCount++;
+                if (clickCount > 3) {
+                    alert("Chill chill, loading it!");
+                    clickCount = 0;
+                    return;
+                }
+                return;
+            }
+
+            lastClickTime = currentTime;
+            clickCount = 1;
+
+            if (changeDirection === 'previous') {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    displayImage(images[currentIndex]);
+                }
+            } else if (changeDirection === 'next') {
+                if (preLoadImage) {
+                    images.push(preLoadImage.src);
+                    currentIndex++;
+                    displayImage(preLoadImage.src);
+                    preLoadImage = null;
+                }
+                fetchAndPreloadImage();
+            }
+        }
+
+        previousBtn.addEventListener('click', () => handleImageChange('previous'));
+        nextBtn.addEventListener('click', () => handleImageChange('next'));
+
+        fetchAndPreloadImage();
+    </script>
+</body>
 </html>
-<script>
-    let currentindex=-1;
-    let images=[];
-    let preLoadImage=null;
-    const imageContainer= document.getElementById('imageContainer');
-    async function fetchAndPreLoadImage(){
-        let response= await fetch('https://picsum.photos/600/400?random');
-        let imageURL=response.url;
-        preLoadImage= new Image();
-        preLoadImage.src=imageURL;
-        if (images.length === 0) {
-        images.push(imageURL);
-        currentindex = 0;
-        displayImage(imageURL);
-    }
-    }
-    function displayImage(image){
-          imageContainer.innerHTML=''
-          imageContainer.innerHTML=`<img src="${image}" alt="img">`;
-    }
-    function previousImage(){
-        if(currentindex>0){
-            currentindex--;
-            displayImage(images[currentindex])
-        }
-    }
-    function nextImage(){
-        if(preLoadImage){
-            images.push(preLoadImage.src);
-            currentindex++;
-            displayImage(preLoadImage.src);
-            preLoadImage=null;
-        }
-        fetchAndPreLoadImage()
-    }
-    fetchAndPreLoadImage()
-</script>
