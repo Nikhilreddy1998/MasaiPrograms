@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="displayData">
+        <div id="imageContainer"></div>
+        <button id="previousBtn" onclick="previousImage()">previous</button>
+        <button id="nextBtn" onclick=" nextImage()">Next</button>
+    </div>
+</body>
+
+</html>
+<script>
+    let currentindex=-1;
+    let images=[];
+    let preLoadImage=null;
+    const imageContainer= document.getElementById('imageContainer');
+    async function fetchAndPreLoadImage(){
+        let response= await fetch('https://picsum.photos/600/400?random');
+        let imageURL=response.url;
+        preLoadImage= new Image();
+        preLoadImage.src=imageURL;
+        if (images.length === 0) {
+        images.push(imageURL);
+        currentindex = 0;
+        displayImage(imageURL);
+    }
+    }
+    function displayImage(image){
+          imageContainer.innerHTML=''
+          imageContainer.innerHTML=`<img src="${image}" alt="img">`;
+    }
+    function previousImage(){
+        if(currentindex>0){
+            currentindex--;
+            displayImage(images[currentindex])
+        }
+    }
+    function nextImage(){
+        if(preLoadImage){
+            images.push(preLoadImage.src);
+            currentindex++;
+            displayImage(preLoadImage.src);
+            preLoadImage=null;
+        }
+        fetchAndPreLoadImage()
+    }
+    fetchAndPreLoadImage()
+</script>
