@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  margin: 50px;
+}
+
+input {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 250px;
+}
+
+button {
+  padding: 10px;
+  width: 150px;
+  cursor: pointer;
+}
+        .hidden {
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <!--Sign up-->
+    <div id="signup-container">
+        <h3>Sign Up</h3>
+        <input type="email" id="signup-email" placeholder="Enter Email">
+        <input type="password" id="signup-password" placeholder="Enter Password">
+        <select id="role">
+          <option value="user">User</option>
+          <option value="admin">Admin</option>
+        </select>
+        <button id="signup-btn">Sign Up</button>
+        
+        <p id="signup-message"></p>
+      </div>
+      <div id="login-container">
+        <h3>Login </h3>
+        <input type="email" id="login-email" placeholder="Enter Email" />
+        <input
+          type="password"
+          id="login-password"
+          placeholder="Enter Password"
+        />
+        <button id="login-btn">Login</button>
+        <p id="login-message"></p>
+      </div>
+      <div id="logout-container">
+        <h3>Welcome <span id="user-email"></span></h3>
+        <button id="logout-btn">Logout</button>
+      </div>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
+        import {  getAuth, 
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword,
+            signOut,
+            onAuthStateChanged 
+        } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+       
+        const firebaseConfig = {
+          apiKey: "AIzaSyCx94xs4DnoxBLiONdCjdakcjzCg81lLEU",
+          authDomain: "auth-a15d3.firebaseapp.com",
+          projectId: "auth-a15d3",
+          storageBucket: "auth-a15d3.firebasestorage.app",
+          messagingSenderId: "362370838562",
+          appId: "1:362370838562:web:2795dfde68d105595a9a7b",
+          measurementId: "G-JF19L43RFV"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+        
+        
+        document.getElementById('signup-btn').addEventListener('click', () => {
+        let email = document.getElementById('signup-email').value
+        let password = document.getElementById('signup-password').value
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredentials) => {
+         document.getElementById('signup-message').innerText = "Signup Sucessful"
+         })
+         .catch((error) => {
+          document.getElementById("signup-message").innerText = error.message
+         })
+         })
+         document.getElementById("login-btn").addEventListener("click", () => {
+         let email = document.getElementById("login-email").value;
+         let password = document.getElementById("login-password").value;
+
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredentials) => {
+         document.getElementById("login-message").innerText = "Login Successful";
+         })
+         .catch((error) => {
+         document.getElementById("login-message").innerText = error.message;
+         });
+         });
+         document.getElementById('logout-btn').addEventListener('click', () => {
+         signOut(auth)
+         .then(() => {
+         alert('Logged out successfully');
+         })
+         .catch((error) => {
+         alert(error.message)
+         })
+         })
+         onAuthStateChanged(auth, (user) => {
+         if(user){
+         document.getElementById('user-email').innerText = user.email;
+         document.getElementById('login-container').classList.add('hidden')
+         document.getElementById('signup-container').classList.add('hidden')
+         document.getElementById('logout-container').classList.remove('hidden')
+         }
+         else{
+          document.getElementById('login-container').classList.remove('hidden')
+          document.getElementById('signup-container').classList.remove('hidden')
+          document.getElementById('logout-container').classList.add('hidden')
+          
+         }
+         })
+      </script>
+</body>
+</html>

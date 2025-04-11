@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Loan Application</h1>
+        </header>
+        <main>
+            <div class="progress-bar">
+                <div class="step active"><span>1</span> Personal Details</div>
+                <div class="step"><span>2</span> Income Details</div>
+                <div class="step"><span>3</span> Loan Requirements</div>
+                <div class="step"><span>4</span> Review & Apply</div>
+            </div>
+
+            <div class="form-container">
+                <div id="page-1" class="page active">
+                    <h2>Personal Details</h2>
+                    <form id="personal-details-form">
+                        <div class="form-group">
+                            <label for="name">Full Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number:</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address:</label>
+                            <textarea id="address" name="address" required></textarea>
+                        </div>
+                        <button type="button" class="next-btn" data-next="page-2">Next</button>
+                    </form>
+                </div>
+
+                <div id="page-2" class="page">
+                    <h2>Income Details</h2>
+                    <form id="income-details-form">
+                        <div class="form-group">
+                            <label for="income">Monthly Income (INR):</label>
+                            <input type="number" id="income" name="income" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="employment">Employment Type:</label>
+                            <select id="employment" name="employment">
+                                <option value="salaried">Salaried</option>
+                                <option value="self-employed">Self-Employed</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <button type="button" class="prev-btn" data-prev="page-1">Previous</button>
+                        <button type="button" class="next-btn" data-next="page-3">Next</button>
+                    </form>
+                </div>
+
+                <div id="page-3" class="page">
+                    <h2>Loan Requirements</h2>
+                    <form id="loan-requirements-form">
+                        <div class="form-group">
+                            <label for="loan-amount">Loan Amount (INR):</label>
+                            <input type="number" id="loan-amount" name="loan-amount" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loan-purpose">Purpose of Loan:</label>
+                            <input type="text" id="loan-purpose" name="loan-purpose">
+                        </div>
+                        <div class="form-group">
+                            <label for="loan-tenure">Loan Tenure (in months):</label>
+                            <input type="number" id="loan-tenure" name="loan-tenure" required>
+                        </div>
+                        <button type="button" class="prev-btn" data-prev="page-2">Previous</button>
+                        <button type="button" class="next-btn" data-next="page-4">Next</button>
+                    </form>
+                </div>
+
+                <div id="page-4" class="page">
+                    <h2>Review and Apply</h2>
+                    <div id="eligibility-section">
+                        <h3>Loan Eligibility</h3>
+                        <p id="eligibility-message">Please fill out the previous sections to determine your eligibility.</p>
+                        <div id="eligible-loans" style="display:none;">
+                            <h4>You may be eligible for the following loan(s):</h4>
+                            <ul id="loan-options">
+                                </ul>
+                            <button id="apply-button" disabled>Apply for Loan</button>
+                        </div>
+                        <div id="ineligible-message" style="display:none;">
+                            <p>Unfortunately, based on the information provided, you may not be eligible for a loan at this time.</p>
+                        </div>
+                    </div>
+                    <button type="button" class="prev-btn" data-prev="page-3">Previous</button>
+                    <button type="button" id="submit-btn">Submit Application</button>
+                    <p class="disclaimer">By clicking "Submit Application", you agree to our terms and conditions.</p>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>&copy; 2025 Loan Application</p>
+        </footer>
+    </div>
+
+    <script>
+        const pages = document.querySelectorAll('.page');
+        const nextButtons = document.querySelectorAll('.next-btn');
+        const prevButtons = document.querySelectorAll('.prev-btn');
+        const steps = document.querySelectorAll('.progress-bar .step');
+        const submitButton = document.getElementById('submit-btn');
+        const applyButton = document.getElementById('apply-button');
+
+        let currentPageIndex = 0;
+
+        function showPage(index) {
+            pages.forEach(page => page.classList.remove('active'));
+            steps.forEach(step => step.classList.remove('active'));
+            pages[index].classList.add('active');
+            for (let i = 0; i <= index; i++) {
+                steps[i].classList.add('active');
+            }
+            currentPageIndex = index;
+            updateNavigationButtons();
+            if (currentPageIndex === pages.length - 1) {
+                checkLoanEligibility();
+            }
+        }
+
+        function updateNavigationButtons() {
+            nextButtons.forEach(button => button.style.display = 'none');
+            prevButtons.forEach(button => button.style.display = 'none');
+            submitButton.style.display = 'none';
+            applyButton.disabled = true;
+
+            if (currentPageIndex < pages.length - 1) {
+                const activePage = pages[currentPageIndex];
+                const nextButton = activePage.querySelector('.next-btn');
+                if (nextButton) {
+                    nextButton.style.display = 'inline-block';
+                }
+            }
+
+            if (currentPageIndex > 0) {
+                const activePage = pages[currentPageIndex];
+                const prevButton = activePage.querySelector('.prev-btn');
+                if (prevButton) {
+                    prevButton.style.display = 'inline-block';
+                }
+            }
+
+            if (currentPageIndex === pages.length - 1) {
+                submitButton.style.display = 'inline-block';
+            }
+        }
+
+        nextButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const nextPageId = button.getAttribute('data-next');
+                const nextPageIndex = Array.from(pages).findIndex(page => page.id === nextPageId);
+                if (nextPageIndex !== -1) {
+                    showPage(nextPageIndex);
+                }
+            });
+        });
+
+        prevButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const prevPageId = button.getAttribute('data-prev');
+                const prevPageIndex = Array.from(pages).findIndex(page => page.id === prevPageId);
+                if (prevPageIndex !== -1) {
+                    showPage(prevPageIndex);
+                }
+            });
+        });
+
+        function checkLoanEligibility() {
+            const income = parseFloat(document.getElementById('income').value);
+            const loanAmount = parseFloat(document.getElementById('loan-amount').value);
+            const loanTenure = parseInt(document.getElementById('loan-tenure').value);
+            const eligibilityMessage = document.getElementById('eligibility-message');
+            const eligibleLoansSection = document.getElementById('eligible-loans');
+            const ineligibleMessage = document.getElementById('ineligible-message');
+            const loanOptionsList = document.getElementById('loan-options');
+
+            loanOptionsList.innerHTML = ''; 
+            eligibleLoansSection.style.display = 'none';
+            ineligibleMessage.style.display = 'none';
+            eligibilityMessage.textContent = 'Checking loan eligibility...';
+
+    
+            setTimeout(() => {
+                let eligible = false;
+                const offeredLoans = [];
+
+                if (income >= 30000 && loanAmount <= 500000 && loanTenure <= 36) {
+                    eligible = true;
+                    offeredLoans.push("Personal Loan");
+                }
+                if (income >= 50000 && loanAmount <= 1000000 && loanTenure <= 60) {
+                    eligible = true;
+                    offeredLoans.push("Home Improvement Loan");
+                }
+                if (income >= 25000 && loanAmount <= 200000 && loanTenure <= 24) {
+                    eligible = true;
+                    offeredLoans.push("Two-Wheeler Loan");
+                }
+
+                eligibilityMessage.textContent = '';
+                if (eligible) {
+                    eligibleLoansSection.style.display = 'block';
+                    offeredLoans.forEach(loan => {
+                        const li = document.createElement('li');
+                        li.textContent = loan;
+                        loanOptionsList.appendChild(li);
+                    });
+                    applyButton.disabled = false;
+                } else {
+                    ineligibleMessage.style.display = 'block';
+                }
+            }, 1500); // Simulate processing time
+        }
+
+        submitButton.addEventListener('click', () => {
+            alert('Loan application submitted!');
+            
+        });
+
+        applyButton.addEventListener('click', () => {
+            const selectedLoan = document.querySelector('#loan-options li:first-child')?.textContent; 
+            if (selectedLoan) {
+                alert(`Applying for a ${selectedLoan}. Further steps will be communicated.`);
+                
+            } else {
+                alert('No eligible loan selected.');
+            }
+        });
+
+        showPage(0);
+    </script>
+</body>
+</html>

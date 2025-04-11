@@ -1,0 +1,182 @@
+body {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 700px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+.step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    padding-top: 25px;
+}
+
+.step span {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: #ddd;
+    color: #333;
+    border-radius: 50%;
+    line-height: 30px;
+    margin: 0 auto 10px;
+    font-size: 14px;
+}
+
+.step.active span {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.step::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #ddd;
+    z-index: -1;
+}
+
+.step:first-child::before {
+    content: none;
+}
+
+.form-container {
+    position: relative;
+}
+
+.page {
+    display: none;
+    animation: fade 0.3s ease-in-out;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select {
+    width: calc(100% - 12px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.prev-btn, .next-btn {
+    flex-grow: 1;
+}
+
+#submit-btn {
+    display: none;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#eligibility-section {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+#eligible-loans h4 {
+    margin-top: 0;
+}
+
+#loan-options {
+    list-style: disc;
+    margin-left: 20px;
+    padding-left: 0;
+}
+
+#apply-button {
+    margin-top: 15px;
+    width: auto;
+}
+
+.disclaimer {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 15px;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #777;
+}
