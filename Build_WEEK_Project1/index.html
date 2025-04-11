@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Application</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Loan Application</h1>
+        </header>
+        <main>
+            <div class="progress-bar">
+                <div class="step active"><span>1</span> Personal Details</div>
+                <div class="step"><span>2</span> Income Details</div>
+                <div class="step"><span>3</span> Loan Requirements</div>
+                <div class="step"><span>4</span> Review & Apply</div>
+            </div>
+
+            <div class="form-container">
+                <div id="page-1" class="page active">
+                    <h2>Personal Details</h2>
+                    <form id="personal-details-form">
+                        <div class="form-group">
+                            <label for="name">Full Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number:</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address:</label>
+                            <textarea id="address" name="address" required></textarea>
+                        </div>
+                        <button type="button" class="next-btn" data-next="page-2">Next</button>
+                    </form>
+                </div>
+
+                <div id="page-2" class="page">
+                    <h2>Income Details</h2>
+                    <form id="income-details-form">
+                        <div class="form-group">
+                            <label for="income">Monthly Income (INR):</label>
+                            <input type="number" id="income" name="income" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="employment">Employment Type:</label>
+                            <select id="employment" name="employment">
+                                <option value="salaried">Salaried</option>
+                                <option value="self-employed">Self-Employed</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <button type="button" class="prev-btn" data-prev="page-1">Previous</button>
+                        <button type="button" class="next-btn" data-next="page-3">Next</button>
+                    </form>
+                </div>
+
+                <div id="page-3" class="page">
+                    <h2>Loan Requirements</h2>
+                    <form id="loan-requirements-form">
+                        <div class="form-group">
+                            <label for="loan-amount">Loan Amount (INR):</label>
+                            <input type="number" id="loan-amount" name="loan-amount" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loan-purpose">Purpose of Loan:</label>
+                            <input type="text" id="loan-purpose" name="loan-purpose">
+                        </div>
+                        <div class="form-group">
+                            <label for="loan-tenure">Loan Tenure (in months):</label>
+                            <input type="number" id="loan-tenure" name="loan-tenure" required>
+                        </div>
+                        <button type="button" class="prev-btn" data-prev="page-2">Previous</button>
+                        <button type="button" class="next-btn" data-next="page-4">Next</button>
+                    </form>
+                </div>
+
+                <div id="page-4" class="page">
+                    <h2>Review and Apply</h2>
+                    <div id="eligibility-section">
+                        <h3>Loan Eligibility</h3>
+                        <p id="eligibility-message">Please fill out the previous sections to determine your eligibility.</p>
+                        <div id="eligible-loans" style="display:none;">
+                            <h4>You may be eligible for the following loan(s):</h4>
+                            <ul id="loan-options">
+                                </ul>
+                            <button id="apply-button" disabled>Apply for Loan</button>
+                        </div>
+                        <div id="ineligible-message" style="display:none;">
+                            <p>Unfortunately, based on the information provided, you may not be eligible for a loan at this time.</p>
+                        </div>
+                    </div>
+                    <button type="button" class="prev-btn" data-prev="page-3">Previous</button>
+                    <button type="button" id="submit-btn">Submit Application</button>
+                    <p class="disclaimer">By clicking "Submit Application", you agree to our terms and conditions.</p>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>&copy; 2025 Loan Application</p>
+        </footer>
+    </div>
+  <script type="module" src="form.js"></script>
+</body>
+</html>
