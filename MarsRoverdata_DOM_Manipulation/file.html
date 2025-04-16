@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="selectcam">
+        <option value="FHAZ">Front Hazard Avoidance Camera</option>
+        <option value="RHAZ">Rear Hazard Avoidance Camera</option>
+        <option value="MAST">Mast Camera</option>
+        <option value="CHEMCAM">Chemistry and Camera Complex</option>
+        <option value="MAHLI">Mars Hand Lens Imager</option>
+        <option value="MARDI">Mars Descent Imager</option>
+        <option value="NAVCAM">Navigation Camera</option>
+        <option value="PANCAM">Panoramic Camera</option>
+        <option value="MINITES">Miniature Thermal Emission Spectrometer (Mini-TES)</option>
+        
+    </select>
+    <input type="date" id="date" placeholder="enter date" required>
+    <select id="sol">
+     <option value>1000</option>
+     <option value>500</option>
+     <option value>100</option>
+    </select>
+    <div id="images">
+
+    </div>
+    
+</body>
+</html>
+<script>
+    async function getdata(){
+        let res=await fetch("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=2OucnSGoeANvtdXhnysunZnCsHNVHjGlVhgXW2oY")
+        let data=await res.json()
+        let photos=data.photos
+        let finalphotos=photos.map((ele)=>ele.img_src)
+        fetchdata(finalphotos)
+      }
+      function fetchdata(finalphotos){
+    let imgcontainer=document.getElementById('images')
+    finalphotos.forEach(ele=>{
+        let div=document.createElement('div')
+        div.innerHTML=`
+                    <img src=${ele}>
+                    `
+    imgcontainer.appendChild(div)
+    })
+}
+getdata()
+
+
+        
+    
+
+</script>

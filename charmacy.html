@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Pharmacy Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .container {
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            max-width: 1280px;
+        }
+        .bg-blue-500 {
+            background-color: #3b82f6;
+        }
+        .bg-blue-100 {
+            background-color: #eff6ff;
+        }
+        .bg-purple-100 {
+            background-color: #f5f3ff;
+        }
+        .bg-green-500 {
+            background-color: #10b981;
+        }
+        .bg-green-600 {
+            background-color: #059669;
+        }
+        .bg-yellow-500 {
+            background-color: #f59e0b;
+        }
+        .bg-yellow-600 {
+             background-color: #d97706;
+        }
+        .bg-red-500{
+            background-color: #dc2626;
+        }
+        .bg-red-600{
+            background-color: #b91c1c;
+        }
+
+        .text-white {
+            color: #ffffff;
+        }
+        .text-gray-100 {
+            color: #f3f4f6;
+        }
+        .text-gray-200 {
+            color: #e5e7eb;
+        }
+        .text-gray-300 {
+            color: #d1d5db;
+        }
+        .text-gray-500 {
+            color: #6b7280;
+        }
+        .text-gray-600 {
+            color: #4b5563;
+        }
+        .text-gray-700 {
+            color: #374151;
+        }
+        .text-gray-800 {
+            color: #1f2937;
+        }
+        .text-yellow-400 {
+            color: #fef08a;
+        }
+        .text-blue-500{
+            color:#3b82f6;
+        }
+
+        .text-xl {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+        }
+        .text-lg {
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+        }
+        .text-sm {
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+        }
+        .text-xs{
+            font-size: 0.75rem;
+            line-height: 1rem;
+        }
+
+        .font-semibold {
+            font-weight: 600;
+        }
+        .font-bold{
+            font-weight: 700;
+        }
+
+        .py-2 {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+        .py-3 {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .py-6 {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+        .py-16{
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        .px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .rounded-md {
+            border-radius: 0.375rem;
+        }
+        .rounded-lg {
+            border-radius: 0.5rem;
+        }
+        .rounded-full {
+            border-radius: 9999px;
+        }
+        .rounded-b-lg{
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+        }
+        .rounded-l-lg{
+             border-top-left-radius: 0.5rem;
+            border-bottom-left-radius: 0.5rem;
+        }
+        .shadow {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+        }
+        .shadow-md {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        .shadow-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+
+        .flex {
+            display: flex;
+        }
+        .grid{
+            display: grid;
+        }
+        .justify-between {
+            justify-content: space-between;
+        }
+        .items-center {
+            align-items: center;
+        }
+        .flex-col{
+            flex-direction: column;
+        }
+
+        .space-x-6 > * + * {
+            margin-left: 1.5rem;
+        }
+        .space-y-4 > * + *{
+            margin-top: 1rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+        .md\:block {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            .md\:block {
+                display: block;
+            }
+        }
+        .md\:grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        @media (min-width: 768px) {
+            .md\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        .md\:grid-cols-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+        @media (min-width: 768px) {
+            .md\:grid-cols-3 {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+        .lg\:grid-cols-4 {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+        @media (min-width: 1024px) {
+            .lg\:grid-cols-4 {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+
+        .text-center {
+            text-align: center;
+        }
+        .text-left{
+            text-align: left;
+        }
+
+        .transition-colors {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-duration: 0.3s;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover\:text-white:hover {
+            color: #ffffff;
+        }
+        .hover\:bg-green-600:hover {
+            background-color: #059669;
+        }
+        .hover\:bg-yellow-600:hover{
+            background-color: #d97706;
+        }
+        .focus\:outline-none:focus {
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+        }
+        .focus\:shadow-outline:focus {
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+        }
+        .transition-transform {
+            transition-property: transform;
+            transition-duration: 0.2s;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover\:scale-105:hover {
+            transform: scale(1.05);
+        }
+
+        .absolute {
+            position: absolute;
+        }
+        .relative {
+            position: relative;
+        }
+        .fixed{
+            position: fixed;
+        }
+
+        .top-0 {
+            top: 0px;
+        }
+        .left-0 {
+            left: 0px;
+        }
+        .right-0{
+            right: 0px;
+        }
+        .z-50 {
+            z-index: 50;
+        }
+        .w-full {
+            width: 100%;
+        }
+        .h-full {
+            height: 100%;
+        }
+        .w-6 {
+            width: 1.5rem;
+        }
+        .h-6 {
+            height: 1.5rem;
+        }
+        .w-5{
+            width: 1.25rem;
+        }
+        .h-5{
+            height: 1.25rem;
+        }
+        .w-80{
+            width: 20rem;
+        }
+        .h-32{
+            height: 8rem;
+        }
+
+        .opacity-75 {
+            opacity: 0.75;
+        }
+        .opacity-50{
+            opacity: 0.5;
+        }
+        .cursor-not-allowed {
+            cursor: not-allowed;
+        }
+
+        .resize-y {
+            resize: vertical;
+        }
+        .overflow-y-auto {
+            overflow-y: auto;
+        }
+
+        .object-cover {
+            object-fit: cover;
+        }
+        .self-center{
+            align-self: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-blue-500 shadow-md rounded-b-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-white text-xl font-semibold">
+                <span class="text-yellow-400">Medi</span>Store
+            </a>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="#home" class="text-gray-200 hover:text-white transition-colors duration-300">Home</a></li>
+                    <li><a href="#products" class="text-gray-200 hover:text-white transition-colors duration-300">Products</a></li>
+                    <li><a href="#about" class="text-gray-200 hover:text-white transition-colors duration-300">About</a></li>
+                    <li><a href="#contact" class="text-gray-200 hover:text-white transition-colors duration-300">Contact</a></li>
+                    <li>
+                        <a href="#cart" class="text-gray-200 hover:text-white transition-colors duration-300 relative">
+                            Cart
+                            <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <button id="hamburger-btn" class="md:hidden text-white focus:outline-none" aria-label="Toggle Navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-90 z-50">
+        <div class="bg-gray-800 w-80 h-full absolute right-0 p-6 rounded-l-lg shadow-xl">
+            <div class="flex justify-end mb-4">
+                <button id="close-menu-btn" class="text-white focus:outline-none" aria-label="Close Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <nav class="block">
+                <ul class="space-y-4">
+                    <li><a href="#home" class="block text-gray-200 hover:text-white text-lg transition-colors duration-300">Home</a></li>
+                    <li><a href="#products" class="block text-gray-200 hover:text-white text-lg transition-colors duration-300">Products</a></li>
+                    <li><a href="#about" class="block text-gray-200 hover:text-white text-lg transition-colors duration-300">About</a></li>
+                    <li><a href="#contact" class="block text-gray-200 hover:text-white text-lg transition-colors duration-300">Contact</a></li>
+                    <li>
+                         <a href="#cart" class="block text-gray-200 hover:text-white text-lg transition-colors duration-300 relative">
+                            Cart
+                            <span id="mobile-cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <section id="home" class="bg-gradient-to-br from-blue-100 to-purple-100 py-16 md:py-24">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-3xl md:text-5xl font-semibold text-gray-800 mb-4">
+                Your Trusted Online Pharmacy
+            </h1>
+            <p class="text-lg text-gray-600 mb-8">
+                A wide range of medicines and health products. Fast delivery and affordable prices.
+            </p>
+            <a href="#products" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-full transition-colors duration-300 text-lg">
+                Shop Now
+            </a>
+        </div>
+    </section>
+
+    <section id="products" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-semibold text-gray-800 text-center mb-8">
+                Featured Products
+            </h2>
+            <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                </div>
+        </div>
+    </section>
+
+    <section id="about" class="bg-blue-100 py-16 rounded-t-lg shadow-md">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">About Us</h2>
+                    <p class="text-gray-600 text-lg">
+                        MediStore is your reliable online source for high-quality medicines and healthcare products. We are committed to providing a seamless and convenient shopping experience with a wide selection of products, fast delivery, and exceptional customer service.  Your health and well-being are our top priorities.
+                    </p>
+                </div>
+                <div class="hidden md:block">
+                    <img src="https://source.unsplash.com/random/600x400/?pharmacy,medicine" alt="About Us" class="rounded-lg shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-semibold text-gray-800 text-center mb-8">Contact Us</h2>
+            <div class="bg-white rounded-lg shadow-md p-6 md:p-10 max-w-2xl mx-auto">
+                <form id="contact-form" class="space-y-4">
+                    <div>
+                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
+                        <input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+                        <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Message:</label>
+                        <textarea id="message" name="message" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32 resize-y" required></textarea>
+                    </div>
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full transition-colors duration-300 focus:outline-none focus:shadow-outline">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div id="cart-modal" class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-75 z-50 hidden">
+        <div class="bg-white w-full md:w-96 h-full absolute right-0 p-6 rounded-l-lg shadow-xl overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-semibold text-gray-800">Your Cart</h2>
+                <button id="close-cart-btn" class="text-gray-600 hover:text-gray-800 focus:outline-none" aria-label="Close Cart">
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div id="cart-items" class="space-y-4">
+                </div>
+            <div id="cart-total" class="mt-6 font-semibold text-gray-800 text-lg">
+                Total: $0.00
+            </div>
+            <div class="mt-8">
+                <button id="checkout-btn" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-full transition-colors duration-300 w-full text-lg disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                    Checkout
+                </button>
+            </div>
+             <div id="no-items-message" class="text-gray-500 text-center mt-4 hidden">
+                Your cart is empty.
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-800 py-6 rounded-t-lg shadow-md">
+        <div class="container mx-auto px-4 text-center text-gray-300">
+            &copy; 2025 MediStore. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        const products = [
+            { id: 1, name: "Amoxicillin", price: 10.99, description: "Antibiotic used to treat infections.", image: "https://source.unsplash.com/random/150x150/?antibiotic,pills" },
+            { id: 2, name: "Ibuprofen", price: 5.49, description: "Pain reliever and anti-inflammatory.", image: "https://source.unsplash.com/random/150x150/?painkiller,medicine" },
+            { id: 3, name: "Cetirizine", price: 8.75, description: "Antihistamine for allergy relief.", image: "https://source.unsplash.com/random/150x150/?allergy,pills" },
+            { id: 4, name: "Paracetamol", price: 3.29, description: "Fever reducer and pain reliever.", image: "https://source.unsplash.com/random/150x150/?fever,medicine" },
+            { id: 5, name: "Omeprazole", price: 12.50, description: "Proton pump inhibitor for acid reflux.", image: "https://source.unsplash.com/random/150x150/?acidity,capsule" },
+            { id: 6, name: "Aspirin", price: 4.99, description: "Pain reliever and blood thinner.", image: "https://source.unsplash.com/random/150x150/?aspirin,pills" },
+            { id: 7, name: "Loratadine", price: 7.25, description: "Non-drowsy antihistamine.", image: "https://source.unsplash.com/random/150x150/?antihistamine,pills" },
+            { id: 8, name: "Ranitidine", price: 6.80, description: "Histamine H2 receptor antagonist.", image: "https://source.unsplash.com/random/150x150/?antacid, таблетки" }
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let total = 0;
+
+        const productList = document.getElementById('product-list');
+        const cartCountElement = document.getElementById('cart-count');
+        const mobileCartCountElement = document.getElementById('mobile-cart-count');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotalElement = document.getElementById('cart-total');
+        const cartModal = document.getElementById('cart-modal');
+        const cartBtn = document.querySelector('a[href="#cart"]');
+        const closeCartBtn = document.getElementById('close-cart-btn');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const noItemsMessage = document.getElementById('no-items-message');
+        const contactForm = document.getElementById('contact-form');
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileMenuBtn = document.getElementById('close-menu-btn');
+
+
+        function displayProducts() {
+            productList.innerHTML = '';
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('bg-white', 'rounded-lg', 'shadow-md', 'p-4', 'flex', 'flex-col', 'transition-transform', 'hover:scale-105');
+
+                const productImage = document.createElement('img');
+                productImage.src = product.image;
+                productImage.alt = product.name;
+                productImage.classList.add('w-full', 'h-32', 'object-cover', 'rounded-md', 'mb-4');
+
+                const productName = document.createElement('h3');
+                productName.textContent = product.name;
+                productName.classList.add('text-lg', 'font-semibold', 'text-gray-800', 'mb-2');
+
+                const productDescription = document.createElement('p');
+                productDescription.textContent = product.description;
+                productDescription.classList.add('text-gray-600', 'mb-4', 'flex-grow');
+
+                const productPrice = document.createElement('p');
+                productPrice.textContent = `$${product.price.toFixed(2)}`;
+                productPrice.classList.add('text-xl', 'font-bold', 'text-blue-500', 'mb-4');
+
+                const addToCartButton = document.createElement('button');
+                addToCartButton.textContent = 'Add to Cart';
+                addToCartButton.classList.add('bg-yellow-500', 'hover:bg-yellow-600', 'text-gray-800', 'font-semibold', 'py-2', 'px-4', 'rounded-full', 'transition-colors', 'duration-300', 'focus:outline-none', 'focus:shadow-outline');
+                addToCartButton.addEventListener('click', () => {
+                    addToCart(product);
+                });
+
+                productCard.appendChild(productImage);
+                productCard.appendChild(productName);
+                productCard.appendChild(productDescription);
+                productCard.appendChild(productPrice);
+                productCard.appendChild(addToCartButton);
+                productList.appendChild(productCard);
+            });
+        }
+
+        function addToCart(product) {
+            let existingItem = cart.find(item => item.product.id === product.id);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ product: product, quantity: 1 });
+            }
+
+            updateCart();
+            showCartIconBadge();
+            saveCart();
+            toastr.success(`${product.name} has been added to your cart!`, 'Success');
+        }
+
+        function updateCart() {
+            cartItemsContainer.innerHTML = '';
+            total = 0;
+
+            if (cart.length === 0) {
+                noItemsMessage.classList.remove('hidden');
+                checkoutBtn.disabled = true;
+                checkoutBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            } else {
+                noItemsMessage.classList.add('hidden');
+                checkoutBtn.disabled = false;
+                checkoutBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                cart.forEach(item => {
+                    const cartItem = document.createElement('div');
+                    cartItem.classList.add('flex', 'justify-between', 'items-center', 'border-b', 'pb-4');
+
+                    const itemDetails = document.createElement('div');
+                    itemDetails.classList.add('flex', 'items-center');
+
+                    const itemName = document.createElement('h4');
+                    itemName.textContent = item.product.name;
+                    itemName.classList.add('text-gray-800', 'font-semibold', 'mr-4');
+
+                    const itemQuantity = document.createElement('span');
+                    itemQuantity.textContent = `x${item.quantity}`;
+                    itemQuantity.classList.add('text-gray-600', 'mr-4');
+
+                     const increaseButton = document.createElement('button');
+                    increaseButton.textContent = '+';
+                    increaseButton.classList.add('bg-green-200', 'hover:bg-green-300', 'text-gray-800', 'font-bold', 'rounded-full', 'w-6', 'h-6', 'text-xs', 'focus:outline-none', 'focus:shadow-outline');
+                    increaseButton.addEventListener('click', () => {
+                        increaseQuantity(item.product.id);
+                    });
+
+                    const decreaseButton = document.createElement('button');
+                    decreaseButton.textContent = '-';
+                    decreaseButton.classList.add('bg-red-200', 'hover:bg-red-300', 'text-gray-800', 'font-bold', 'rounded-full', 'w-6', 'h-6', 'text-xs', 'focus:outline-none', 'focus:shadow-outline');
+                    decreaseButton.addEventListener('click', () => {
+                        decreaseQuantity(item.product.id);
+                    });
+
+                    const itemPrice = document.createElement('p');
+                    itemPrice.textContent = `$${(item.product.price * item.quantity).toFixed(2)}`;
+                    itemPrice.classList.add('text-blue-500', 'font-bold');
+
+                    const removeButton = document.createElement('button');
+                    removeButton.textContent = 'Remove';
+                    removeButton.classList.add('bg-red-500', 'hover:bg-red-600', 'text-white', 'font-semibold', 'py-1', 'px-2', 'rounded-full', 'transition-colors', 'duration-300', 'text-sm', 'focus:outline-none', 'focus:shadow-outline');
+                    removeButton.addEventListener('click', () => {
+                        removeFromCart(item.product.id);
+                    });
+
+                    itemDetails.appendChild(itemName);
+                    itemDetails.appendChild(itemQuantity);
+                    itemDetails.appendChild(increaseButton);
+                    itemDetails.appendChild(decreaseButton);
+                    cartItem.appendChild(itemDetails);
+                    cartItem.appendChild(itemPrice);
+                    cartItem.appendChild(removeButton);
+                    cartItemsContainer.appendChild(cartItem);
+
+                    total += item.product.price * item.quantity;
+                });
+                cartTotalElement.textContent = `Total: $${total.toFixed(2)}`;
+            }
+        }
+
+        function increaseQuantity(productId) {
+            let item = cart.find(item => item.product.id === productId);
+            if (item) {
+                item.quantity += 1;
+                updateCart();
+                showCartIconBadge();
+                saveCart();
+            }
+        }
+
+       function decreaseQuantity(productId) {
+            let item = cart.find(item => item.product.id === productId);
+            if (item && item.quantity > 1) {
+                item.quantity -= 1;
+                updateCart();
+                showCartIconBadge();
+                saveCart();
+            }
+            else if (item && item.quantity === 1)
+            {
+                 removeFromCart(productId);
+            }
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.product.id !== productId);
+            updateCart();
+            showCartIconBadge();
+            saveCart();
+            if(cart.length === 0){
+                 cartModal.classList.add('hidden');
+            }
+            toastr.success('Item removed from cart!', 'Success');
+        }
+
+        function showCartIconBadge() {
+            let totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCountElement.textContent = totalQuantity;
+            mobileCartCountElement.textContent = totalQuantity;
+            if (totalQuantity > 0) {
+                cartCountElement.classList.remove('hidden');
+                mobileCartCountElement.classList.remove('hidden');
+            } else {
+                cartCountElement.classList.add('hidden');
+                mobileCartCountElement.classList.add('hidden');
+            }
+        }
+
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function clearCart() {
+            cart = [];
+            total = 0;
+            updateCart();
+            showCartIconBadge();
+            saveCart();
+            cartModal.classList.add('hidden');
+            toastr.success('Your order has been placed successfully!', 'Success');
+        }
+
+        cartBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            cartModal.classList.remove('hidden');
+            updateCart();
+        });
+
+        closeCartBtn.addEventListener('click', () => {
+            cartModal.classList.add('hidden');
+        });
+
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length > 0) {
+                clearCart();
+            }
+        });
+
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Simulate sending data (replace with actual backend call)
+            console.log('Name:', name);
+            console.log('Email:', email);
+            console.log('Message:', message);
+
+            // Clear form and show message
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+            toastr.success('Your message has been sent!', 'Success');
+        });
+
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+
+        closeMobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!cartModal.classList.contains('hidden') && !cartModal.contains(event.target) && event.target !== cartBtn) {
+                cartModal.classList.add('hidden');
+            }
+             if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && event.target !== hamburgerBtn) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Initialize
+        displayProducts();
+        showCartIconBadge();
+        updateCart();
+
+        // Optional: Toastr.js for notifications (include CDN in head)
+        // <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+        // <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        if (typeof toastr !== 'undefined') {
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true,
+                "positionClass": "toast-bottom-right"
+            };
+        }
+    </script>
+</body>
+</html>
