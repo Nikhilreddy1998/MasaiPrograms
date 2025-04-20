@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <h1 id="title">This is vannilaJS</h1>
+    <button id="button">Change Title By VannilaJS</button>
+    <p id="count">0</p>
+    <div id="root">Welcome to React</div>
+</body>
+</html>
+<script type="text/babel">
+const{useState}=React
+let p=document.getElementById('count')
+let h1=document.getElementById('title')
+let b=document.getElementById("button")
+let curr=0
+b.addEventListener("click",()=>{
+ h1.textContent="This title is Changed by vannilaJS"
+ curr++
+ p.textContent=curr
+
+})
+function Change(){
+const[title,setTitle]=useState("This is ReactDOM")
+const[count,setCount]=useState(0)
+function handleClick(){
+    setCount(count+1)
+    setTitle("This title is changed by ReactDOM")
+}
+return(
+    <div>
+        <h1>{title}</h1>
+        <p>count:{count}</p>
+    <button onClick={handleClick}>Change Title by React DOM</button>
+    </div>
+)
+}
+function App(){
+    return(
+        <>
+        <Change/>
+        </>
+    )
+}
+
+let root =ReactDOM.createRoot(document.getElementById('root'))
+root.render(<App/>)
+</script>
