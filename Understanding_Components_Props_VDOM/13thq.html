@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root">Welcome to React</div>
+</body>
+</html>
+<script type="text/babel">
+function FeatureItem({ text }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
+      <span style={{ color: 'green', marginRight: '8px' }}>&#10004;</span>
+      <span>{text}</span>
+    </div>
+  );
+}
+
+function Button({ text, onClick, style }) {
+  const defaultButtonStyle = {
+    padding: '10px 20px',
+    borderRadius: '5px',
+    border: 'none',
+    cursor: 'pointer',
+    fontWeight: 'bold',
+  };
+  const combinedStyle = { ...defaultButtonStyle, ...style };
+  return (
+    <button onClick={onClick} style={combinedStyle}>{text}</button>
+  );
+}
+
+function PricingCard({ planName, price, features, buttonText, buttonStyle }) {
+  return (
+    <div style={{ border: '1px solid #ccc', borderRadius: '8px', padding: '20px', marginBottom: '20px', width: '300px' }}>
+      <h3 style={{ marginBottom: '10px' }}>{planName}</h3>
+      {price && <p style={{ fontSize: '1.5em', fontWeight: 'bold', marginBottom: '15px' }}>{price}</p>}
+      <div>
+        {features.map((feature, index) => (
+          <FeatureItem key={index} text={feature} />
+        ))}
+      </div>
+      <Button text={buttonText} style={buttonStyle} />
+    </div>
+  );
+}
+
+function HeroSection() {
+  return (
+    <div style={{ marginBottom: '30px' }}>
+      <h2 style={{ color: '#7952B3', marginBottom: '10px' }}>The Right Plan for <span style={{ fontWeight: 'bold' }}>Your Business</span></h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quod in iure vero. Facilis magnam, sed officiis commodi labore odit.</p>
+    </div>
+  );
+}
+
+function PricingSection() {
+  return (
+    <div style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
+      <PricingCard
+        planName="Starter"
+        features={["1 lorem ipsum", "Lorem, ipsum dolor.", "Monthly Updates"]}
+        buttonText="Get Started"
+        buttonStyle={{ backgroundColor: '#e0e0e0', color: '#333' }}
+      />
+      <PricingCard
+        planName="Free"
+        features={["1 lorem ipsum", "Lorem, ipsum dolor.", "Monthly Updates"]}
+        buttonText="Get Started"
+        buttonStyle={{ backgroundColor: '#e0e0e0', color: '#333' }}
+      />
+      <PricingCard
+        planName="Lorem Plus"
+        price="$32.00"
+        features={["1 lorem ipsum", "Lorem, ipsum dolor.", "Monthly Updates"]}
+        buttonText="Get Started"
+        buttonStyle={{ backgroundColor: '#7952B3', color: 'white' }}
+      />
+      <PricingCard
+        planName="Lorem Pro"
+        price="$50.00"
+        features={["1 lorem ipsum", "Lorem, ipsum dolor.", "Monthly Updates"]}
+        buttonText="Get Started"
+        buttonStyle={{ backgroundColor: '#7952B3', color: 'white' }}
+      />
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div style={{ fontFamily: 'sans-serif', padding: '20px' }}>
+      <HeroSection />
+      <PricingSection />
+    </div>
+  );
+}
+
+let root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+</script>
