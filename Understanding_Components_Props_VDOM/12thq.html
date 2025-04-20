@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      .card {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .card-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .card-content {
+        font-size: 16px;
+        color: #555;
+        line-height: 1.5;
+      }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        function Card(props) {
+            return (
+                <div className="card">
+                    <h2 className="card-title">{props.title}</h2>
+                    <div className="card-content">{props.children}</div>
+                </div>
+            );
+        }
+
+        function App() {
+            return (
+                <div style={{ padding: 20 }}>
+                    <h1>Reusable Card Component</h1>
+                    <Card title="Card 1">
+                        <p>This is the content of card 1.</p>
+                        <p>It can contain multiple paragraphs and other elements.</p>
+                    </Card>
+                    <Card title="Card 2">
+                        <p>This is another card with different content.</p>
+                        <ul>
+                            <li>Item 1</li>
+                            <li>Item 2</li>
+                            <li>Item 3</li>
+                        </ul>
+                    </Card>
+                    <Card title="Card 3">
+                        <p>This card uses a different style.</p>
+                        <p><em>Italic text</em></p>
+                         <p><strong>Bold Text</strong></p>
+                    </Card>
+                    <Card title="Card with Image">
+                        <img src="https://via.placeholder.com/150" alt="Placeholder" style={{width: '100%', maxWidth: '150px'}}/>
+                        <p>Image is displayed here</p>
+                    </Card>
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
+    </script>
+</body>
+</html>
