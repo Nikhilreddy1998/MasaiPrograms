@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+<style>
+    .product-list{
+        display:flex;
+        flex-wrap: wrap;
+        gap:20px;
+        padding:20px;
+    }
+    .product-card{
+        border:1px solid #ccc;
+        padding: 15px;
+        width:300px;
+        text-align:center;
+    }
+    .product-card img{
+
+        max-width:100%;
+        height:auto;
+        margin-bottom:10px;
+    }
+    .product-card h3{
+        margin-top:0;
+        margin-bottom:5px;
+    }
+    .product-card p{
+        margin-bottom:10px;
+    }
+    .product-card button{
+        padding:8px 15px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function App(){
+            const[products,setProducts]=React.useState([])
+            const[loading,setLoading]=React.useState(false)
+            const[error,setError]=React.useState(null)
+
+            React.useEffect(()=>{
+                try{
+                    const jsonData=[
+                        {
+                            "id":1,
+                            "name":"T-shirt",
+                            "price":1500.99,
+                            "image":"https://i.pinimg.com/474x/2e/18/be/2e18be6bb84b65121b11879ecbb48d4d.jpg",
+                            "likes":0
+                        },
+                        {
+                            "id":2,
+                            "name":"T-shirt",
+                            "price":1600.99,
+                            "image":"https://i.pinimg.com/474x/a1/7e/23/a17e23192907c8bfed8d6cb6923107e0.jpg",
+                            "likes":5
+                        },
+                        {
+                            "id":3,
+                            "name":"T-shirt",
+                            "price":1700.99,
+                            "image":"https://i.pinimg.com/originals/f8/11/8b/f8118b6f3f37577b705a105e636323b2.jpg",
+                            "likes":3
+                        },
+                        {
+                            "id":4,
+                            "name":"T-shirt",
+                            "price":1800.99,
+                            "image":"https://www.nextprint.in/cdn/shop/products/A_a1feacc1-5f37-49a3-9362-9662dfd6d3d8_medium.png?v=1652203775",
+                            "likes":9
+                        }
+
+                    ]
+                    setProducts(jsonData)
+                }
+                catch(error){
+                    console.log("Error loading:",error)
+                    setError("Failed to load")
+                    setLoading(false)
+                }
+            },[])
+
+            const handleLike=(productId)=>{
+                const updatedProducts=products.map(product=>
+                    product.id===productId ? {...product,likes:(product.likes||0)+1}:product 
+        
+                )
+                setProducts(updatedProducts)
+            }
+            if(loading){
+                return <div>
+                    loading products... 
+                    </div>
+            }
+            if(error){
+                return <div>
+                    Error:{error}
+                    </div>
+            }
+            return (
+                <div className="product-list">
+                    {products.map(product=>
+                    (
+                        <ProductCard key={product.id} product={product} onLike={handleLike}/>
+                    ))}
+                    </div>
+                )
+        }
+        function ProductCard({product,onLike}){
+            return(
+                <div className="product-card">
+                    <img src={product.image} alt={product.name}/>
+                    <h3>{product.name}</h3>
+                    <p>Price:${product.price}</p>
+                    <button onClick={()=>onLike(product.id)}>
+                        Like({product.likes||0})
+                    </button>
+                    </div>
+            )
+        }
+        const root=ReactDOM.createRoot(document.getElementById('root'))
+        root.render(<App/>)
+    </script>
+    
+</body>
+</html>
