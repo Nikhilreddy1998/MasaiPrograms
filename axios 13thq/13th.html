@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Email Form</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function App() {
+            const [emailFields, setEmailFields] = React.useState(['']);
+            const [emails, setEmails] = React.useState([]);
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            const handleAddEmail = () => {
+                setEmailFields([...emailFields, '']);
+            };
+
+            const handleEmailChange = (index, event) => {
+                const newEmailFields = [...emailFields];
+                newEmailFields[index] = event.target.value;
+                setEmailFields(newEmailFields);
+            };
+
+            const handleValidateEmails = () => {
+                const validEmails = emailFields.filter(email => emailRegex.test(email));
+                setEmails(validEmails);
+            };
+
+            return (
+                <div>
+                    <h2>Dynamic Email Form</h2>
+                    {emailFields.map((email, index) => (
+                        <div key={index}>
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(event) => handleEmailChange(index, event)}
+                                placeholder="Enter email"
+                            />
+                        </div>
+                    ))}
+                    <button onClick={handleAddEmail}>Add Email</button>
+                    <button onClick={handleValidateEmails}>Submit Emails</button>
+
+                    <h3>Entered Emails:</h3>
+                    <ul>
+                        {emails.map((email, index) => (
+                            <li key={index}>{email}</li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        }
+
+        let root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
