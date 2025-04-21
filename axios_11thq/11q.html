@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    
+</head>
+<body>
+    <div id="root">Welcome to React</div>
+</body>
+</html>
+<script type="text/babel">
+    const{useState}=React
+    
+function App() {
+  const [username, setUsername] = useState('');
+  const [error, setError] = useState('');
+
+  const handleChange = (event) => {
+    setUsername(event.target.value);
+    setError(''); // Clear any previous error when the user types
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (username.trim() === '') {
+      setError('Username cannot be empty.');
+    } else {
+      alert(`Submitted username: ${username}`);
+    }
+  };
+
+  return (
+    <div>
+      <h1>Controlled Form</h1>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={handleChange}
+          />
+        </div>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+}
+
+let root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+    </script>
