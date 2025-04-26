@@ -1,0 +1,25 @@
+.Footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+  }
+  .Header{
+        position: fixed;
+        width: 100%;
+        left:0;
+        top: 0;
+        background: #555;
+        color: #f1f1f1;
+  }
+  .Main{
+    display:flex;
+        justify-content: center;
+        text-align: center;
+        background-color: chartreuse;
+        height:400px;
+        width:400px;
+  }
