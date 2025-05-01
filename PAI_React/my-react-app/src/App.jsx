@@ -1,21 +1,19 @@
-import React  from 'react';
-import {Routes,Route} from 'react-router-dom';
-import ProductList from './components/ProductList'
-import ProductDetail from './components/ProductDetail'
-import Cart from './components/Cart'
-import './App.css';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import ProductList from './components/ProductList';
+import ProductDetail from './components/ProductDetail';
+import Cart from './components/Cart';
 
 function App() {
-    return(
-        <div>
-            <Routes>
-                <Route path='/' element={<ProductList/>}/>
-                <Route path='/product/:id' element={<ProductDetail/>}/>
-                <Route path='/Cart' element={<Cart/>}/>
-            </Routes>
-        </div>
-    )
- 
+  return (
+    <div>
+      <Routes>
+        <Route path="/" element={<ProductList />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
