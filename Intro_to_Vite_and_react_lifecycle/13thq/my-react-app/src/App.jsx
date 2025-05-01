@@ -15,7 +15,7 @@ function App() {
   },[])
   useEffect(()=>{
     console.log(`count updated to ${count}`)
-  })
+  },[count])
   return (
   <>
   <Display count={count}/>
