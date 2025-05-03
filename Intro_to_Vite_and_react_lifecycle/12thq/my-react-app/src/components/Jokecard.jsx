@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function JokeCard() {
+export function JokeCard() {
   const [joke, setJoke] = useState('')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -63,4 +63,3 @@ function JokeCard() {
   )
 }
 
-export default JokeCard
