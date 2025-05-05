@@ -14,7 +14,7 @@ let Policies = [
  let fine =Policies.reduce((acc,curr)=>{
     if(curr.policyType=="Health")
     {
-      curr=curr.daysLate*30  
+      curr=curr.daysLate*30
     }
     if(curr.policyType=="Car")
         {
