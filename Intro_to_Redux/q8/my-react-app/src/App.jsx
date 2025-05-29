@@ -1,8 +1,13 @@
 import React, { useRef } from 'react';
 import './App.css';
+import Counter from './counter';
 
 function App() {
- // I will be completing this by Monday eod
+ return(
+    <>
+    <Counter/>
+    </>
+ )
 }
 
 export default App;

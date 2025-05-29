@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import App from "../App";
 import { ProductDetail } from "../Components/ProductDetail";
 import { ProductList } from "../Components/ProductList";
-import { Cart } from "../Components/Cart";
+import { Cart } from "../components/Cart";
 const router = createBrowserRouter([
   {
     path: "/",

@@ -1,0 +1,44 @@
+{
+  "establishments": [
+    {
+      "FHRSID": 1,
+      "BusinessName": "The Green Garden Restaurant",
+      "BusinessType": "Restaurant/Cafe/Canteen",
+      "BusinessTypeID": 1,
+      "AddressLine1": "123 High Street",
+      "AddressLine2": "City Center",
+      "AddressLine3": "",
+      "AddressLine4": "",
+      "PostCode": "AB1 2CD",
+      "RatingValue": "5",
+      "RatingDate": "2023-05-15",
+      "LocalAuthorityCode": "001",
+      "LocalAuthorityName": "London Borough",
+      "LocalAuthorityWebSite": "https://www.londonborough.gov.uk",
+      "SchemeType": "FHRS",
+      "NewRatingPending": false,
+      "Longitude": -0.1276,
+      "Latitude": 51.5074
+    },
+    {
+      "FHRSID": 2,
+      "BusinessName": "Ocean Blue Fish & Chips",
+      "BusinessType": "Restaurant/Cafe/Canteen",
+      "BusinessTypeID": 1,
+      "AddressLine1": "45 Marina Drive",
+      "AddressLine2": "Seafront",
+      "AddressLine3": "",
+      "AddressLine4": "",
+      "PostCode": "SE2 8TY",
+      "RatingValue": "4",
+      "RatingDate": "2023-04-20",
+      "LocalAuthorityCode": "002",
+      "LocalAuthorityName": "Brighton & Hove",
+      "LocalAuthorityWebSite": "https://www.brighton-hove.gov.uk",
+      "SchemeType": "FHRS",
+      "NewRatingPending": false,
+      "Longitude": -0.1372,
+      "Latitude": 50.8229
+    }
+  ]
+}
