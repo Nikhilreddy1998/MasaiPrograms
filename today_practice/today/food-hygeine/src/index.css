@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.header {
+  background-color: #333;
+  color: white;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  font-size: 1.1rem;
+}
+
+.header nav a {
+  margin-left: 1rem;
+  color: white;
+  text-decoration: none;
+}
+
+.main-container {
+  max-width: 900px;
+  margin: 1rem auto;
+  padding: 0 1rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.4rem;
+  margin-bottom: 0.8rem;
+  border: 1px solid #ccc;
+}
+
+.list-item, .bookmark-list-item {
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-item.rating-5 { background-color: #e6ffe6; }
+.list-item.rating-3-4 { background-color: #fffbe6; }
+.list-item.rating-0-1-2 { background-color: #ffe6e6; }
+.list-item.rating-other { background-color: #f8f8f8; }
+
+.bookmark-button, .remove-bookmark-button {
+  padding: 0.3rem 0.6rem;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+.bookmark-button { background-color: #007bff; }
+.remove-bookmark-button { background-color: #dc3545; }
+.bookmark-button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.loading-message, .no-results-message {
+  text-align: center;
+  margin-top: 1rem;
+  color: #666;
+}
