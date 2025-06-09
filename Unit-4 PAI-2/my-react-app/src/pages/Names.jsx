@@ -12,7 +12,7 @@ function Names(){
     const containerStyle={
         display:"grid",
         gridTemplateColumns: '2fr 1fr',
-        backgroundColor:"grey"
+        backgroundColor:"cream"
     }
 
     useEffect(()=>{
@@ -23,7 +23,7 @@ function Names(){
     if(error) return <p>Error:{error}</p>
     return <div style={containerStyle}>
         {data&&data.results.map((pokemon,index)=>(
-            <p key={index}>{pokemon.name}</p>
+            <h3 key={index}>{pokemon.name}</h3>
         ))}
     </div>
 }

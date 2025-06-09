@@ -12,7 +12,7 @@ function About(){
     const containerStyle={
         display:"grid",
         gridTemplateColumns: '2fr 1fr',
-        backgroundColor:"grey"
+        backgroundColor:"cream"
     }
 
     useEffect(()=>{
@@ -21,11 +21,18 @@ function About(){
 
     if(loading) return <p>Loading...</p>
     if(error) return <p>Error:{error}</p>
-    return <div style={containerStyle}>
+    return( 
+        <>
+    <div style={containerStyle}>
         {data&&data.results.map((pokemon,index)=>(
+            <>
             <p key={index}>{pokemon.url}</p>
+            <a href={pokemon.url}>Details</a>
+            </>
         ))}
     </div>
+    </>
+    )
 }
 
 export default About
