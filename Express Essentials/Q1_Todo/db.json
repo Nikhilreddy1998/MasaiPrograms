@@ -1,0 +1,7 @@
+{
+  "todos": [
+    { "id": 2, "title": "Assingment 2", "completed": false },
+    { "id": 3, "title": "Assingment 4", "completed": false },
+    { "id": 4, "title": "DSA 21", "complete": false }
+  ]
+}
