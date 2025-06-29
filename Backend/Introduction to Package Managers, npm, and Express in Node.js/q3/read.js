@@ -1,15 +1,16 @@
-function info(){
-
 const fs=require('fs')
-fs.readFile('data.txt','utf8',(err,data)=>{
-    if(err)
-    {
-        console.error(err)
-        return
-    }
-    return data
-})
 
+
+
+function readDataFile(callback) {
+    fs.readFile('data.txt', 'utf8', (err, data) => {
+        if (err) {
+            console.error("Error reading data.txt:", err);
+            return callback(err, null);
+        }
+        callback(null, data);
+    });
 }
 
-module.exports=info
+
+module.exports=readDataFile

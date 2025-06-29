@@ -1,11 +1,11 @@
 const express =require('express')
 const app =express()
-const info=require('./read')
+const readDataFile=require('./read')
 app.get('/test',(req,res)=>{
     res.send("Test route is working")
 })
 app.get('/readfile',(req,res)=>{
-    info((err, data) => {
+    readDataFile((err, data) => {
         if (err) {
             return res.status(500).send("Error reading file.");
         }
