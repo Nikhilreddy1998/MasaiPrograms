@@ -22,4 +22,32 @@ UserRouter.post("/add-user",async (req,res)=>{
     res.status(200).json({msg:"user added",user})
 })
 
+UserRouter.patch("/update-user/:userId",async (req,res)=>{
+    const {userId}=req.params
+
+    let user=await UserModel.findById(userId)
+
+    if(!user){
+        res.status(404).json({msg:"UserNotfounf"})
+    }
+    else{
+        await UserModel.findByIdAndUpdate(userId,req.body)
+        res.status(200).json({msg:"Userupdated"})
+    }
+})
+
+UserRouter.delete('/delete-user/:userId',async(req,res)=>{
+    const {userId}=req.params
+
+    let user =await UserModel.findById(userId)
+
+    if(!user){
+        res.status(404).json({msg:"User Not found"})
+    }
+    else{
+        await UserModel.findByIdAndDelete(userId)
+        res.status(200).json({msg:"User Deleted"})
+    }
+})
+
 module.exports= UserRouter;
