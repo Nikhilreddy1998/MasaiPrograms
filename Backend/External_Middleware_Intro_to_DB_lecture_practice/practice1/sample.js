@@ -1,0 +1,1 @@
+[{name:"Intro to SQL",instructor:"Bob",duration:45,isCompleted:false},{name:"Intro to SQL",instructor:"Charlie",duration:55,isCompleted:false}]
