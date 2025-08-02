@@ -1,0 +1,20 @@
+const express = require('express')
+
+
+const connectTODB =require("./configs/mongodb.config")
+
+
+const BookRouter=require("./routes/product.routes")
+
+
+const app=express()
+connectTODB()
+
+app.use(express.json())
+
+
+app.use("/products",ProductRouter)
+
+app.listen(7777,()=>{
+    console.log("server started running")
+})
