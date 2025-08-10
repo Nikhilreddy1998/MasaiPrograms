@@ -1,0 +1,72 @@
+
+
+1)    db.sales.aggregate([
+{$group:{_id:"$category",totalSales:{$sum:"$amount"}}}]
+)
+
+2)    db.sales.aggregate([
+  {
+    $addFields: {
+      month: { $substr: ["$date", 0, 7] } 
+    }
+  },
+  {
+    $group: {
+      _id: "$month",
+      totalSales: { $sum: "$amount" }
+    }
+  },
+  { $sort: { _id: 1 } } 
+])
+
+3)    db.sales.aggregate([
+  {
+    $group:{_id:"$product",totalRev:{$sum:"$amount"}}
+  },
+  {
+    $sort:{totalRev:-1}
+  },{
+    $limit:1
+  }]
+)
+
+
+4)    db.sales.aggregate([
+  {
+    $group:{_id:null,totalTran:{$avg:"$amount"}}
+  }]
+)
+
+5)    db.sales.aggregate([
+  {
+    $addFields:{month:{$substr:["$date",0,7]}}
+  },{
+    $group:{_id:"$month",countSales:{$sum:1}}
+  }
+])
+
+6)    db.sales.aggregate([
+  {
+    $group:{_id:"$region",totalSales:{$sum:"$amount"}}
+  }]
+)
+
+7)    db.sales.aggregate([
+  {$group:{_id:"$product",totalAmount:{$sum:"$amount"}}},
+  {$sort:{totalAmount:-1}},
+  {$limit:3}
+])
+
+8)    db.sales.aggregate([
+  {$group:{_id:"$category",totalTran:{$sum:1}}}
+])
+
+9)    db.sales.aggregate([
+  {$group:{_id:"$region",avgSales:{$avg:"$amount"}}}
+])
+
+10)   db.sales.aggregate([
+  {$match:{category:{$in:["Electronics","Fashion"]}}},
+  {$group:{_id:"$category",totalSales:{$sum:"$amount"}}}
+])
+

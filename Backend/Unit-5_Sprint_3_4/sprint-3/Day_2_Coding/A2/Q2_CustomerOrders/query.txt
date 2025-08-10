@@ -1,0 +1,55 @@
+
+
+1)    db.customers.aggregate([
+  {$lookup:{
+    from:"orders",
+    localField:"_id",
+    foreignField:"customerId",
+    as:"order"
+  }},
+  {$unwind:"$order"},
+  {$group:{_id:"$name",totalSpend:{$sum:"$order.amount"}}}
+])
+
+
+2)   db.orders.aggregate([
+  {$lookup:{
+    from:"customers",
+    localField:"customerId",
+    foreignField:"_id",
+    as:"customer"
+  }},
+  {$unwind:"$customer"}
+])
+
+
+3)    db.orders.find({amount:{$gt:500}})
+
+4)  db.customers.aggregate([
+  {$lookup:{
+    from:"orders",
+    localField:"_id",
+    foreignField:"customerId",
+    as:"order"
+  }},{$unwind:"$order"},
+  {$group:{_id:"$name",avgOrderAmount:{$avg:"$order.amount"}}}
+])
+
+
+5)   db.orders.aggregate([
+  {$lookup:{
+    from:"customers",
+    localField:"customerId",
+    foreignField:"_id",
+    as:"customer"
+  }},
+  {$unwind:"$customer"},
+  {$project:{
+    "_id":0,
+    customerId:1,
+    amount:1,
+    product:1,
+    customerName:"$customer.name",
+    city:"$customer.city"
+  }}
+])
