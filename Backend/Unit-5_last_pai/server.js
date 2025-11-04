@@ -1,0 +1,12 @@
+const express=require("express")
+const connectToDb = require("./configs/mongodb.config")
+const UserRouter = require("./routes/user.routes")
+const VehicleRouter = require("./routes/vehicle.routes")
+connectToDb()
+const app=express()
+app.use(express.json())
+app.use('/users',UserRouter)
+app.use('/vehicles',VehicleRouter)
+app.listen(3000,()=>{
+    console.log("server started")
+})
