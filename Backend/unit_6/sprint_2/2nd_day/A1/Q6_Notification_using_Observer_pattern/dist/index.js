@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const NotificationCenter_1 = require("./src/Observer Design Pattern/NotificationCenter");
+const SmartPhoneObserver_1 = require("./src/Observer Design Pattern/SmartPhoneObserver");
+const TabletObserver_1 = require("./src/Observer Design Pattern/TabletObserver");
+const realmePhone = new SmartPhoneObserver_1.SmartPhoneObserver();
+const realmeTablet = new TabletObserver_1.TabletObserver();
+const notificationCenter = new NotificationCenter_1.NotificationCenter();
+notificationCenter.attach(realmePhone);
+notificationCenter.attach(realmeTablet);
+notificationCenter.detach(realmeTablet);
+notificationCenter.notify();

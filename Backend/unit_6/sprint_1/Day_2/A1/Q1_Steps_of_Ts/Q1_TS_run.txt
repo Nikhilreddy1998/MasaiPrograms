@@ -1,0 +1,19 @@
+
+
+Step 1 : Intall TypeScript globally if not already install in system
+         > npm install -g typescript
+
+Step 2 : Write TypeScript code 
+         Filename : hello.ts
+         let message:string = "Hello world!!"
+         console.log(message)
+
+Step 3 : Compile TypeScript to JavaScript
+        > tsc hello.ts
+        for project
+        > tsc --init
+        > tsc
+        It will create js files
+    
+Step 4 : Run compiled JavaScript file using Node.js
+         > node hello.js

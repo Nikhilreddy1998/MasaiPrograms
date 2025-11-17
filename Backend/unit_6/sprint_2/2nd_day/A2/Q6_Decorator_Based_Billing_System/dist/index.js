@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const Espresso_1 = require("./src/Decorator Design Pattern/Bevarages/Espresso");
+const LemonTea_1 = require("./src/Decorator Design Pattern/Bevarages/LemonTea");
+const Honey_1 = require("./src/Decorator Design Pattern/Toppings/Honey");
+const Sugar_1 = require("./src/Decorator Design Pattern/Toppings/Sugar");
+const WhippedCream_1 = require("./src/Decorator Design Pattern/Toppings/WhippedCream");
+const order1 = new Honey_1.Honey(new WhippedCream_1.WhippedCream(new Espresso_1.Espresso()));
+const order2 = new Sugar_1.Sugar(new Sugar_1.Sugar(new LemonTea_1.LemonTea()));
+console.log(`Order 1: ${order1.getDescription()}`);
+console.log(`Cost 1: ₹${order1.getCost()}`);
+console.log(`Order 2: ${order2.getDescription()}`);
+console.log(`Cost 2: ₹${order2.getCost()}`);

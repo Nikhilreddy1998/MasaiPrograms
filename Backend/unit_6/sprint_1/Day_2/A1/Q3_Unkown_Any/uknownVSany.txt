@@ -1,0 +1,14 @@
+let unknownValue: unknown = "Hello, TypeScript!";
+let anyValue: any = "Hello, TypeScript!";
+
+// 1. What will happen if we call `.toUpperCase()` on both values?
+console.log(unknownValue.toUpperCase());  // What will happen here?
+This will cause a compile-time error because 'unknown' must be type-checked before calling methods on it
+
+console.log(anyValue.toUpperCase());     // What will happen here?
+The above code will work fine as any not requires to type-check 
+
+// 2. 
+let myValue: unknown = 100;
+console.log(myValue + 1);  // What will happen here?
+This will cause a compile-time error because 'unknown' must be type-checked before calling methods on it

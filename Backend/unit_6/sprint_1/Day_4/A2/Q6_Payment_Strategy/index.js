@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var PaymentContext_1 = require("./src/PaymentContext");
+var BitCoinPaymentStrategy_1 = require("./src/strategies/BitCoinPaymentStrategy");
+var CardPaymentStrategy_1 = require("./src/strategies/CardPaymentStrategy");
+var UPIPaymentStrategy_1 = require("./src/strategies/UPIPaymentStrategy");
+var payment = new PaymentContext_1.PaymentContext(new CardPaymentStrategy_1.CardPaymentStrategy);
+payment.process(200);
+payment.setPaymentMode(new BitCoinPaymentStrategy_1.BitCoinPaymentStrategy);
+payment.process(1000);
+payment.setPaymentMode(new UPIPaymentStrategy_1.UPIIPaymentStrategy);
+payment.process(150);

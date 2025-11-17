@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const ShippingContext_1 = require("./src/ShippingContext");
+const ExpressShipping_1 = require("./src/ShippingStrategies/ExpressShipping");
+const OneDayShipping_1 = require("./src/ShippingStrategies/OneDayShipping");
+const StandardShipping_1 = require("./src/ShippingStrategies/StandardShipping");
+const shipping = new ShippingContext_1.ShippingContext(new StandardShipping_1.StandardShipping());
+console.log(shipping.costCalculate());
+shipping.setShippingStrategy(new ExpressShipping_1.ExpressShipping());
+console.log(shipping.costCalculate());
+shipping.setShippingStrategy(new OneDayShipping_1.OneDayShipping);
+console.log(shipping.costCalculate());

@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const BikeStrategy_1 = require("./src/BikeStrategy");
+const CarStrategy_1 = require("./src/CarStrategy");
+const Driver_1 = require("./src/Driver");
+const bike = new BikeStrategy_1.BikeStrategy();
+const car = new CarStrategy_1.CarStrategy();
+const vehicle = new Driver_1.Driver(bike);
+vehicle.drive();
+vehicle.setVehicle(car);
+vehicle.drive();
