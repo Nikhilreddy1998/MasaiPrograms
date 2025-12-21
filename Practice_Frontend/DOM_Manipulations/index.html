@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="search" placeholder="enter"/>
+    <button onclick="fetchdata()">Enter to fetch</button>
+    <div id="container"></div>
+</body>
+<script>
+    async function fetchdata(){
+        let API_KEY= "c8531864"
+        let search=document.getElementById('search').value
+        let res=await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=${search}`)
+        let data=await res.json()
+        console.log(data)
+    let container=document.getElementById("container")
+    container.innerHTML=""
+    data.search.forEach((ele,ind)=>{
+        
+    let box=document.createElement("div")
+
+    box.innerHTML=` <h1>${ele.title}</h1>`
+     container.appendChild(box)
+    })
+}
+
+
+
+</script>
+</html>
